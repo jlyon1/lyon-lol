@@ -1,0 +1,43 @@
+.content-box{
+
+}
+
+.heading{
+    display: flex;
+    flex-flow: row;
+}
+
+.profile {
+    max-width: 100px;
+    margin: 15px;
+    padding: 5px;
+}
+.prof-img {
+    border-width: 2px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: lightblue;
+
+
+}
+
+h1 {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 900;
+    padding: 0px;
+}
+
+p {
+    font-family: 'Inconsolata', monospace;
+}
+
+html{
+    background-color: black;
+    color: #fefefe;
+}
+
+.content-container{
+    max-width: 675px;
+    position: relative;
+    margin: 0 auto;
+}
