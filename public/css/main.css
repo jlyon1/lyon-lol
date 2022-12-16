@@ -12,6 +12,7 @@ a {
 .heading{
     display: flex;
     flex-flow: row;
+    justify-content: space-between;
 }
 
 .profile {
@@ -21,21 +22,18 @@ a {
 }
 
 .text {
-    text-indent: 20px;
-    padding: 10px;
+    /* text-indent: 20px; */
+    /* padding: 10  px; */
 }
 
 .prof-img {
     border-width: 3px;
-    border-radius: 50%;
     border-style: solid;
-    border-color: rgb(104, 244, 244);
-
-
+    border-color: rgb(238, 114, 241);
 }
 
 .heading-one {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Roboto', monospace;
     font-weight: 900;
     padding: 0px;
 }
@@ -47,7 +45,11 @@ a {
 }
 
 p {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Roboto', monospace;
+}
+
+a{
+    color:rgb(238, 114, 241);
 }
 
 html{
