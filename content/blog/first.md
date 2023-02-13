@@ -1,5 +1,6 @@
 +++
 title = "Another Software Engineer With a Blog"
+slug = "first-post"
 date = 2023-02-12
 +++
 

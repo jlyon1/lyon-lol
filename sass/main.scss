@@ -38,14 +38,30 @@ a {
     font-family: 'Roboto', monospace;
     font-size: 50px;
     font-weight: 800;
+    margin-bottom: 0px;
     padding: 0px;
 }
 
 .heading-two {
     padding: 0px;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-bottom: 5px;
     font-size: 20px;
+}
+
+.articles{
+    display: flex;
+    flex-flow: column;
+    .entry{
+        margin-top: 2px;
+    }
+}
+
+pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    border-radius: 4px;
 }
 
 p {
@@ -67,4 +83,11 @@ html{
     max-width: 675px;
     position: relative;
     margin: 0 auto;
+}
+
+.title{
+    margin-bottom: 0px;
+}
+.subtitle{
+    font-size: 12px;
 }
