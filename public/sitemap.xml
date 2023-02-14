@@ -7,6 +7,10 @@
         <loc>https://lyon.lol/blog/</loc>
     </url>
     <url>
+        <loc>https://lyon.lol/blog/code/</loc>
+        <lastmod>2023-02-14</lastmod>
+    </url>
+    <url>
         <loc>https://lyon.lol/blog/first-post/</loc>
         <lastmod>2023-02-12</lastmod>
     </url>

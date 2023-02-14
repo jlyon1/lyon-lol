@@ -7,7 +7,40 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Sun, 12 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 14 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Infrastrucure Time</title>
+            <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+            <link>https://lyon.lol/blog/code/</link>
+            <guid>https://lyon.lol/blog/code/</guid>
+            <description>&lt;p&gt;Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I&#x27;m working on.&lt;&#x2F;p&gt;
+&lt;p&gt;When working on personal projects I usually don&#x27;t want to think too hard about deployments while still not being limited by my infrastructure. As such, this site and most everything else I put online is on a $4 DigitalOcean VPS with Docker and &lt;a href=&quot;https:&#x2F;&#x2F;dokku.com&#x2F;&quot;&gt;Dokku&lt;&#x2F;a&gt; installed. Shout out to &lt;a href=&quot;https:&#x2F;&#x2F;sidney.kochman.org&quot;&gt;@sidney&lt;&#x2F;a&gt; for introducing me to it years ago.&lt;&#x2F;p&gt;
+&lt;p&gt;Dokku is a great go-to self-hosted PaaS for simple projects. It works nicely with Docker and Buildpacks to provide a simple &lt;code&gt;git push&lt;&#x2F;code&gt; deployment mechanism with zero downtime deployments. Deploying an app with SSL is as simple as running:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;# On the VPS
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; dokku apps:create &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; dokku domains:set &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span&gt; name.lyon.lol
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; dokku letsencrypt:auto-renew &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;# Locally
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git remote add dokku dokku@lyon.lol:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span&gt; git push origin main:master
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After this, my new app will be hosted at &lt;code&gt;https:&#x2F;&#x2F;name.lyon.lol&lt;&#x2F;code&gt;. If I want to deploy a new version I simply git push again.&lt;&#x2F;p&gt;
+&lt;p&gt;To facilitate this I&#x27;ve set up a few DNS records, namely a wildcard A record for all subdomains on lyon.lol&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#002b36;color:#839496;&quot;&gt;&lt;code&gt;&lt;span&gt;Host IP              Type   TTL
+&lt;&#x2F;span&gt;&lt;span&gt;@    68.183.102.12   A      5m
+&lt;&#x2F;span&gt;&lt;span&gt;*    68.183.102.12   A      5m
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This site is a great example of how this infrastructure is very powerful and quick to iterate with. The source is located on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon1&#x2F;lyon-lol&quot;&gt;github&lt;&#x2F;a&gt;. Content updates are just a &lt;code&gt;git push&lt;&#x2F;code&gt; away. I write the content, compile it with &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; and commit the whole output to the repo, at which point I push to dokku.&lt;&#x2F;p&gt;
+&lt;p&gt;For example:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span&gt; run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -u &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -u&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -g&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -v &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;PWD&lt;&#x2F;span&gt;&lt;span&gt;:&#x2F;app&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; --workdir&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;app&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span&gt; 8080:8080&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -p&lt;&#x2F;span&gt;&lt;span&gt; 1024:1024 ghcr.io&#x2F;getzola&#x2F;zola:v0.16.0 build
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; add .
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; commit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt; -m &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Update content&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;git&lt;&#x2F;span&gt;&lt;span&gt; push dokku master
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This keeps it simple and low overhead to maintain.&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Another Software Engineer With a Blog</title>
             <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
