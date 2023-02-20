@@ -14,4 +14,8 @@
         <loc>https://lyon.lol/blog/first-post/</loc>
         <lastmod>2023-02-12</lastmod>
     </url>
+    <url>
+        <loc>https://lyon.lol/blog/kotlin-builder/</loc>
+        <lastmod>2023-02-19</lastmod>
+    </url>
 </urlset>

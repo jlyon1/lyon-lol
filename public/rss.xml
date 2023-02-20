@@ -7,7 +7,96 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Tue, 14 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Kotlin Builders for Fun and Profit</title>
+            <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+            <link>https://lyon.lol/blog/kotlin-builder/</link>
+            <guid>https://lyon.lol/blog/kotlin-builder/</guid>
+            <description>&lt;p&gt;I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.&lt;&#x2F;p&gt;
+&lt;p&gt;Consider the following basic class:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;kt&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-kt &quot;&gt;&lt;code class=&quot;language-kt&quot; data-lang=&quot;kt&quot;&gt;&lt;span style=&quot;color:#93a1a1;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;Person&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;printName&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;        println(name)
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We could initialize it in several ways, but instead of going the traditional route of creating a constructor, we can instead create a builder. See the example below.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;kt&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-kt &quot;&gt;&lt;code class=&quot;language-kt&quot; data-lang=&quot;kt&quot;&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; Create our person builder
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;personBuilder&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;init&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Person.() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;Unit&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Person{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;val &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;person &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; Person()
+&lt;&#x2F;span&gt;&lt;span&gt;    person&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;init()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; person
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; Use the builder to create a new person
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    personBuilder {
+&lt;&#x2F;span&gt;&lt;span&gt;        name &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Joey&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;printName()
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Let&#x27;s break down what happened here. The block following &lt;code&gt;personBuilder {&lt;&#x2F;code&gt; in the main function is a lambda or anonymous function. &lt;code&gt;personBuilder&lt;&#x2F;code&gt; refers to the function declared above which takes a typed anonymous function as a parameter &lt;code&gt;init&lt;&#x2F;code&gt;. In the main function, we are calling personBuilder with the lambda function immediately following it.&lt;&#x2F;p&gt;
+&lt;p&gt;Given &lt;code&gt;init&lt;&#x2F;code&gt; is of type &lt;code&gt;init: Person.() -&amp;gt; Unit&lt;&#x2F;code&gt;, a function with a person-typed receiver, it must be called on an instance of type person, and &lt;code&gt;this&lt;&#x2F;code&gt; within the function will refer to that person object. Now we can modify the parameters of the Person object within the lambda. Let&#x27;s expand on this example a little bit by adding an outfit type to the person class.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;kt&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-kt &quot;&gt;&lt;code class=&quot;language-kt&quot; data-lang=&quot;kt&quot;&gt;&lt;span style=&quot;color:#93a1a1;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;Outfit&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;shirtColor&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;pantsColor&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;printFit&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;        println(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Shirt: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;${shirtColor}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt; Pants: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;${pantsColor}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#93a1a1;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;Person&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;myOutfit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Outfit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; Outfit()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; Outfit Builder
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;outfit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;init&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Outfit.() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;Unit&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Outfit{
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;val &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;outfit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; Outfit()
+&lt;&#x2F;span&gt;&lt;span&gt;        outfit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;init()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;this&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;myOutfit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; outfit &lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; once the Outfit is initilized we can use it to initialize myOutfit
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; outfit
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;printAll&lt;&#x2F;span&gt;&lt;span&gt;(){
+&lt;&#x2F;span&gt;&lt;span&gt;        println(name)
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;this&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;myOutfit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;printFit()
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; Person Builder
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;person&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;init&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Person.() &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;Unit&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span&gt; Person{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;val &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;person &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; Person()
+&lt;&#x2F;span&gt;&lt;span&gt;    person&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;init()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; person
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fun &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    person {
+&lt;&#x2F;span&gt;&lt;span&gt;        name &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Joey&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        outfit {
+&lt;&#x2F;span&gt;&lt;span&gt;            shirtColor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Red&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;            pantsColor &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;blue&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;.&lt;&#x2F;span&gt;&lt;span&gt;printAll()
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&#x2F; Output: 
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;*
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;Joey
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;Red-blue
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;*&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;By putting an outfit builder within the person class we can quickly initialize our objects without much verbosity at all and keep our code clean and readable. There&#x27;s a cool example of this in the Kotlin docs &lt;a href=&quot;https:&#x2F;&#x2F;kotlinlang.org&#x2F;docs&#x2F;type-safe-builders.html#how-it-works&quot;&gt;here&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll be writing more about Kotlin as I find cool new things to work with as a way to document and solidify my understanding.&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Infrastrucure Time</title>
             <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
