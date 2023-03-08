@@ -7,7 +7,52 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>What makes an effective team lead?</title>
+            <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+            <link>https://lyon.lol/blog/what-makes-a-good-tl/</link>
+            <guid>https://lyon.lol/blog/what-makes-a-good-tl/</guid>
+            <description>&lt;p&gt;I (re)started at Wolfjaw Studios in August 2022 after a stint as a Software Engineer at Bloomberg. Tasked with leading a team of 2 engineers I was excited to dip my toes into Engineering Management as this had been a goal of mine for some time. Transitioning into this role has been an ongoing learning experience as it differs somewhat from my experience as an Individual Contributor.&lt;&#x2F;p&gt;
+&lt;p&gt;Writing on this blog keeps me accountable and straightens out my thoughts. Disclaimer: every situation is different so your mileage may vary. I will do my best to document this journey here.&lt;&#x2F;p&gt;
+&lt;p&gt;Since my first day as a Team Lead, one of my driving questions has been: &amp;quot;What does a good engineering team lead actually do?&amp;quot;. I&#x27;d imagine many people who are just stepping into this role have the same question. I have found this to be a surprisingly difficult question to answer, and I probably don&#x27;t have a perfect answer. Given this I try to keep the following at the forefront of my mind in an effort to achieve the goal of being a &amp;quot;good&amp;quot; team lead.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide consistent communication and feedback to your direct reports.&lt;&#x2F;li&gt;
+&lt;li&gt;Highlight and Broadcast direct reports (and team&#x27;s) achievements and blockers.&lt;&#x2F;li&gt;
+&lt;li&gt;Communicate the progress of your team to stakeholders.&lt;&#x2F;li&gt;
+&lt;li&gt;Give feedback and make contributions to the technical product of your team (review and write some code).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;There is much more that goes into it but keeping the above in mind with everything you do will provide a good guiding light to keep you focused on improving yourself and your team. &lt;&#x2F;p&gt;
+&lt;p&gt;Note things like &amp;quot;write jira tickets&amp;quot; and &amp;quot;prescribe tasks to engineers&amp;quot; are missing. These are something you will likely need to do at points however it is outside the scope of this post. I do feel it&#x27;s important to highlight that those are &lt;strong&gt;collaborative processes&lt;&#x2F;strong&gt; and not something you should be dictating, (although one person doing 80% of the work creating tickets before that process goes a long way).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;provide-consistent-communication-and-feedback-to-your-direct-reports&quot;&gt;Provide consistent communication and feedback to your direct reports&lt;&#x2F;h2&gt;
+&lt;p&gt;One of the most important things a team lead does, if the people that report to you don&#x27;t feel seen or communicated with, things can fall apart really quickly. This point is deceptively simple and is one of the biggest challenges to being a team lead in my opinion. Achieving this is challenging. Without going into specific cadences, my strategy is as follows&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go into every meeting with a list of topics to cover, write them down, keep on track and take notes. Write down everything, even the most simple things, you will forget.&lt;&#x2F;li&gt;
+&lt;li&gt;Always deliver feedback as constructively as possible, there is generally no reason to negatively refer to someone&#x27;s work, rather highlight what can be improved by framing it as a constructive process towards building something great.&lt;&#x2F;li&gt;
+&lt;li&gt;Always &lt;strong&gt;slow down&lt;&#x2F;strong&gt; when addressing your responsibilities. If you are context switching frequently or working on some code task, put it down and prioritize this. It&#x27;s better to keep communication consistent and if you are overwhelmed or burned out it&#x27;s likely noticeable by your team and will rub off on them before long.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;highlight-and-broadcast-direct-reports-and-team-s-achievements-and-blockers&quot;&gt;Highlight and Broadcast direct reports (and team&#x27;s) achievements and blockers.&lt;&#x2F;h2&gt;
+&lt;p&gt;Another hugely important facet of leading a team, this point is crucial. In my opinion it&#x27;s always worth it to highlight your team member&#x27;s achievements over your own and over the teams. Be as humble as possible for yourself and make sure they are getting the credit they deserve. Their achievements will speak for you.&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Reflect your team&#x27;s successes up the ladder, highlighting their accomplishments to your manager makes you look good, and gives your team the credit they deserve. Keep in mind the culture of the company when communicating outside of your team, a big part of your Job is navigating the org structure for the benefit of your team.&lt;&#x2F;li&gt;
+&lt;li&gt;Immediately raise blockers and try your best to remove them. No one likes to be blocked and if it reaches you it&#x27;s probably something you need to help handle. Removing them may be as simple as making yourself available for a quick Q&#x2F;A with the engineer to rubber duck it out or provide a new perspective.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;communicate-the-progress-of-your-team-to-stakeholders&quot;&gt;Communicate the progress of your team to stakeholders.&lt;&#x2F;h2&gt;
+&lt;p&gt;This is simpler but critically important. Take in the information you gather from your reports and distill it into a digestible format (either a document, email or meeting). This goes hand in hand with highlighting accomplishments but also keeps stakeholders in the loop on what you are doing.&lt;&#x2F;p&gt;
+&lt;p&gt;Taking clear and concise notes throughout the week is a very good way to do this and they can be used for writing this document. Admittedly I am occasionally worse in this department than I&#x27;d like but I get around it by looking at the artifacts (Jira tickets, Code Reviews, commits, 1:1s) that are produced through the week.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;give-feedback-and-make-contributions-to-the-technical-product-of-your-team-review-and-write-some-code&quot;&gt;Give feedback and make contributions to the technical product of your team (review and write some code).&lt;&#x2F;h2&gt;
+&lt;p&gt;Last but not least this is probably closest to what you did as an IC, but you are doing it at a slower pace as it is no longer your only priority. Accepting this decrease in velocity is crucial and something that is very difficult to reconcile as you are likely used to seeing a concrete output (code &amp;amp; documentation) every week. Trust me, you are still delivering value and providing feedback through design discussions, setting priorities, and the communication you are providing. The work you are doing on the project should be distributed and intentional to give you context that can be used to provide feedback in technical discussions.&lt;&#x2F;p&gt;
+&lt;p&gt;These are just four points that come to mind as I&#x27;m on this journey. I intend to write a few more articles in this series on some other lessons learned and goals I wish to achieve on my team to serve as a repo for myself and others to learn from and iterate on. &lt;&#x2F;p&gt;
+&lt;h3 id=&quot;i-also-want-to-write-about&quot;&gt;I also want to write about:&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Conducting effective meetings&lt;&#x2F;li&gt;
+&lt;li&gt;The importance of writing things down&lt;&#x2F;li&gt;
+&lt;li&gt;Helping your team grow and setting a culture&lt;&#x2F;li&gt;
+&lt;li&gt;Jira-ing when and how&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;If you want to hear about any of these in particular first or just want to chat shoot me an email: &lt;code&gt;joey@lyon.lol&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Kotlin Builders for Fun and Profit</title>
             <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
