@@ -1,5 +1,5 @@
 +++
-title = "What makes an effective team lead?"
+title = "What Makes an Effective Team Lead"
 slug = "what-makes-a-good-tl"
 date = 2023-03-07
 +++
