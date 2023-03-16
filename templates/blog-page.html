@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block head %}
+<meta property="og:title" content="{{ page.title }}" />
+<title>{{ page.title }}</title>
+{% endblock head %}
+
 {% block content %}
 <a href="/"><< Home</a>
 <h2 class="title">
