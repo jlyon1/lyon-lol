@@ -1,12 +1,11 @@
+$background-color: #F5F5F0;
+$link-color: rgb(238, 114, 241);
+
 .icon {
     width: 50px;
     height: 50px;
     fill: white;
     margin: auto;
-}
-
-a {
-    color: white;
 }
 
 .heading{
@@ -70,10 +69,16 @@ p {
 
 a{
     color:rgb(238, 114, 241);
+    padding-left: 2px;
+    padding-right: 2px;
+    &:hover {
+        color: $background-color !important;
+        background-color: $link-color !important;
+    }
 }
 
 html{
-    background-color: #F5F5F0;
+    background-color: $background-color;
     color: black; 
     font-family: 'Inconsolata';
     font-size: 20px;
