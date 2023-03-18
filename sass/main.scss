@@ -9,7 +9,6 @@ $link-color: rgb(238, 114, 241);
 }
 
 .heading{
-    display: flex;
     flex-flow: row;
     justify-content: space-between;
 }
@@ -38,10 +37,17 @@ $link-color: rgb(238, 114, 241);
     font-size: 50px;
     font-weight: 800;
     margin-bottom: 0px;
-    padding: 0px;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    background-color: black;
+    color: $background-color;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .heading-two {
+    width: 100%;
     padding: 0px;
     margin-top: 0px;
     margin-bottom: 5px;
