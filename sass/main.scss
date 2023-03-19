@@ -1,5 +1,9 @@
-$background-color: #F5F5F0;
+$background-color: #f9f5d7;
 $link-color: rgb(238, 114, 241);
+$font-color: #1d2021;
+
+$background-color: $font-color;
+$font-color: #F5F5F0;
 
 .icon {
     width: 50px;
@@ -29,29 +33,36 @@ $link-color: rgb(238, 114, 241);
     width: 100%;
     border-width: 3px;
     border-style: solid;
-    border-color: rgb(238, 114, 241);
+    border-color: $link-color;
 }
 
 .heading-one {
-    font-family: 'Roboto', monospace;
-    font-size: 50px;
-    font-weight: 800;
+    font-family: 'Inconsolata', monospace;
+    font-size: 60px;
+    font-weight: 900;
     margin-bottom: 0px;
     text-align: center;
     padding: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
     width: 100%;
-    background-color: black;
+    background-color: $font-color;
     color: $background-color;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .heading-two {
+    font-family: 'Inconsolata', monospace;
+    font-size: 30px !important;
     width: 100%;
     padding: 0px;
     margin-top: 0px;
     margin-bottom: 5px;
+    margin-right: 0px;
     font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .articles{
@@ -71,21 +82,22 @@ pre code {
 
 p {
     font-family: 'Menlo', monospace;
+    // text-align: justify;
 }
 
 a{
-    color:rgb(238, 114, 241);
+    color:$link-color;
     padding-left: 2px;
     padding-right: 2px;
     &:hover {
-        color: $background-color !important;
+        color: $font-color !important;
         background-color: $link-color !important;
     }
 }
 
 html{
     background-color: $background-color;
-    color: black; 
+    color: $font-color; 
     font-family: 'Menlo', monospace;
     font-size: 20px;
 
