@@ -23,7 +23,8 @@ pre {
     border-color: $link-color;
     border-radius: 2px;
     border-width: 1px;
-    border-style: solid;;
+    border-style: solid;
+    overflow: scroll;
 }
 
 .profile {
