@@ -6,10 +6,15 @@
 
 {% block content %}
 <a href="/"><< Home</a>
+{% for asset in page.assets -%}
+<div class="img-wrapper">
+  <img src="{{asset}}" />
+</div>
+<p class="img-caption">{{ page.extra.image_caption }}</p>
+{%- endfor %}
 <h2 class="title">
   {{ page.title }}
 </h2>
-{{ page.assets }}
 <p class="subtitle"><light>{{ page.date }}</light></p>
 {{ page.content | safe }}
 {% endblock content %}

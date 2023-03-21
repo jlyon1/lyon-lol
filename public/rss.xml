@@ -7,7 +7,168 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 20 Mar 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Header Images (AI Style)</title>
+            <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+            <link>https://lyon.lol/blog/header-images/</link>
+            <guid>https://lyon.lol/blog/header-images/</guid>
+            <description>&lt;h2 id=&quot;ai-everything&quot;&gt;~AI Everything~&lt;&#x2F;h2&gt;
+&lt;p&gt;Operational Update! I&#x27;m spicing things up on the blog. All I read on Twitter now is how people generate everything with AI and add it to every project. I&#x27;ve decided to jump on the trend so I can feel included. I&#x27;ve decided to add some header images to my blog. Unless otherwise specified, they will generally be AI-generated (and most should resemble me). How did I do this? I trained a Stable diffusion model using Dreambooth. I had to rent some time on a GPU-for-rent service, and I gave it around 25 pictures of myself. There are plenty of tutorials on this, and I will probably write about it at some point once I dig up my old repos since it was a fun project, but that is outside the scope of this post.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;meta-blog-content&quot;&gt;Meta-Blog Content&lt;&#x2F;h2&gt;
+&lt;p&gt;This post is about getting Zola to render images. This was pretty easy once I figured out the quirks. First, I added a new directory to my content directory instead of adding a markdown file, as I&#x27;ve done for previous posts. Then, within this directory, I created a main markdown file, &lt;code&gt;index.md&lt;&#x2F;code&gt;, and added any static assets to associate with the page to that directory. &lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#002b36;color:#839496;&quot;&gt;&lt;code&gt;&lt;span&gt;header-images&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;|-- images
+&lt;&#x2F;span&gt;&lt;span&gt;|   |-- main.png
+&lt;&#x2F;span&gt;&lt;span&gt;|-- index.md
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then I needed to modify my blog post template to render the header images. I decided to go for a very low-effort solution and made the following change to my &lt;code&gt;blog-page.html&lt;&#x2F;code&gt; template:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span&gt;{% for asset in page.assets -%}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;div &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;img-wrapper&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;img &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;{{asset}}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;div&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;class&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;img-caption&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;{{ page.extra.image_caption }}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span style=&quot;color:#586e75;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{%- endfor %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Walking through this... &lt;code&gt;page.assets&lt;&#x2F;code&gt; is provided by Zola and contains all assets in the content directory of the current page. In this case, &lt;code&gt;page.assets&lt;&#x2F;code&gt; is &lt;code&gt;[&amp;quot;images&#x2F;main.png&amp;quot;]&lt;&#x2F;code&gt;. Which means we&#x27;ll render an image tag for every asset in this directory. This is not correct for any other use case, but it&#x27;s good enough for now so long as I ensure there is only one asset per directory (and it&#x27;s an image.) &lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve been trying to improve my writing with this blog and getting sucked into styling and re-styling is an easy strategy for me to procrastinate from writing, so I limited myself to a very short time period to get header images working. This hacky solution fit into the timebox.&lt;&#x2F;p&gt;
+&lt;p&gt;I have also made some scss changes to accomodate this, but I&#x27;ve kept things simple for now. The style sheet for the whole blog as of this writing is as follows:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#002b36;color:#839496;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cb4b16;&quot;&gt;#f9f5d7&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;link-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;rgb&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;238&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;114&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;241&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cb4b16;&quot;&gt;#1d2021&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;code-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cb4b16;&quot;&gt;#AAA&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cb4b16;&quot;&gt;#F5F5F0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.icon &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;50&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;50&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;fill&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;white&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.heading&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;flex-flow&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;row&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;justify-content&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;space-between&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.profile &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.prof-img &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;border-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;border-style&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;solid&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;border-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;link-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.heading-one &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-family&lt;&#x2F;span&gt;&lt;span&gt;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Inconsolata&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;monospace&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;60&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-weight&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;900&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-bottom&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;text-align&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;center&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding-left&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding-right&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-top&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-bottom&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.heading-two &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-family&lt;&#x2F;span&gt;&lt;span&gt;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Inconsolata&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;monospace&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px !important&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-top&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-bottom&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-right&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;overflow&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;hidden&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;white-space&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;nowrap&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.articles&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;flex&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;flex-flow&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;column&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.entry&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-top&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;p &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-family&lt;&#x2F;span&gt;&lt;span&gt;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Menlo&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;monospace&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;code &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;code-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.img-caption&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cb4b16;&quot;&gt;#AAA&lt;&#x2F;span&gt;&lt;span&gt;; 
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-top&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.img-wrapper &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;border&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;link-color &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px solid&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-top&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-bottom&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;img&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;%&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;a&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;link-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding-left&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;padding-right&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;:hover {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;!important&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;link-color &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;!important&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;html&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;color&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#268bd2;&quot;&gt;font-color&lt;&#x2F;span&gt;&lt;span&gt;; 
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-family&lt;&#x2F;span&gt;&lt;span&gt;: &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#2aa198;&quot;&gt;Menlo&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;monospace&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.content-container&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;675&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;position&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;relative&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;auto&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.title&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;margin-bottom&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b58900;&quot;&gt;.subtitle&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6c71c4;&quot;&gt;16&lt;&#x2F;span&gt;&lt;span style=&quot;color:#859900;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#657b83;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;relavent-links&quot;&gt;Relavent Links&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;first-post&#x2F;&quot;&gt;Another Software Engineer With a Blog&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;code&#x2F;&quot;&gt;Infrastructure Time&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</description>
+        </item>
         <item>
             <title>Meetings Arent All Bad*</title>
             <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
