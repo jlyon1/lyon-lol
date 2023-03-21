@@ -42,83 +42,83 @@
 <p class="subtitle"><light>2023-02-19</light></p>
 <p>I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.</p>
 <p>Consider the following basic class:</p>
-<pre data-lang="kt" style="background-color:#002b36;color:#839496;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#93a1a1;">class </span><span style="color:#b58900;">Person</span><span> {
-</span><span>    </span><span style="color:#859900;">var </span><span style="color:#b58900;">name</span><span style="color:#859900;">: </span><span style="color:#268bd2;">String </span><span style="color:#657b83;">= </span><span>&quot;&quot;
+<pre data-lang="kt" style="background-color:#383838;color:#e6e1dc;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#cc7833;">class </span><span>Person {
+</span><span>    </span><span style="color:#cc7833;">var </span><span>name</span><span style="color:#cc7833;">: </span><span style="font-style:italic;color:#6e9cbe;">String </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;&quot;
 </span><span>
-</span><span>    </span><span style="color:#859900;">fun </span><span style="color:#b58900;">printName</span><span>(){
+</span><span>    </span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">printName</span><span>(){
 </span><span>        println(name)
 </span><span>    }
 </span><span>}
 </span></code></pre>
 <p>We could initialize it in several ways, but instead of going the traditional route of creating a constructor, we can instead create a builder. See the example below.</p>
-<pre data-lang="kt" style="background-color:#002b36;color:#839496;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#586e75;">// Create our person builder
-</span><span style="color:#859900;">fun </span><span style="color:#b58900;">personBuilder</span><span>(</span><span style="color:#268bd2;">init</span><span style="color:#859900;">:</span><span> Person.() </span><span style="color:#859900;">-&gt; </span><span style="color:#268bd2;">Unit</span><span>)</span><span style="color:#859900;">:</span><span> Person{
-</span><span>    </span><span style="color:#859900;">val </span><span style="color:#b58900;">person </span><span style="color:#657b83;">=</span><span> Person()
-</span><span>    person</span><span style="color:#859900;">.</span><span>init()
-</span><span>    </span><span style="color:#859900;">return</span><span> person
+<pre data-lang="kt" style="background-color:#383838;color:#e6e1dc;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#95815e;">// Create our person builder
+</span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">personBuilder</span><span>(</span><span style="font-style:italic;color:#fd971f;">init</span><span style="color:#cc7833;">:</span><span> Person.() </span><span style="color:#cc7833;">-&gt; </span><span style="font-style:italic;color:#6e9cbe;">Unit</span><span>)</span><span style="color:#cc7833;">:</span><span> Person{
+</span><span>    </span><span style="color:#cc7833;">val </span><span>person </span><span style="color:#cc7833;">=</span><span> Person()
+</span><span>    person</span><span style="color:#cc7833;">.</span><span>init()
+</span><span>    </span><span style="color:#cc7833;">return</span><span> person
 </span><span>}
 </span><span>
 </span><span>
-</span><span style="color:#586e75;">// Use the builder to create a new person
+</span><span style="color:#95815e;">// Use the builder to create a new person
 </span><span>
-</span><span style="color:#859900;">fun </span><span style="color:#b58900;">main</span><span>() {
+</span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">main</span><span>() {
 </span><span>    personBuilder {
-</span><span>        name </span><span style="color:#657b83;">= </span><span>&quot;</span><span style="color:#2aa198;">Joey</span><span>&quot;
-</span><span>    }</span><span style="color:#859900;">.</span><span>printName()
+</span><span>        name </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;Joey&quot;
+</span><span>    }</span><span style="color:#cc7833;">.</span><span>printName()
 </span><span>}
 </span></code></pre>
 <p>Let's break down what happened here. The block following <code>personBuilder {</code> in the main function is a lambda or anonymous function. <code>personBuilder</code> refers to the function declared above which takes a typed anonymous function as a parameter <code>init</code>. In the main function, we are calling personBuilder with the lambda function immediately following it.</p>
 <p>Given <code>init</code> is of type <code>init: Person.() -&gt; Unit</code>, a function with a person-typed receiver, it must be called on an instance of type person, and <code>this</code> within the function will refer to that person object. Now we can modify the parameters of the Person object within the lambda. Let's expand on this example a little bit by adding an outfit type to the person class.</p>
-<pre data-lang="kt" style="background-color:#002b36;color:#839496;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#93a1a1;">class </span><span style="color:#b58900;">Outfit</span><span> {
-</span><span>    </span><span style="color:#859900;">var </span><span style="color:#b58900;">shirtColor</span><span style="color:#859900;">: </span><span style="color:#268bd2;">String </span><span style="color:#657b83;">= </span><span>&quot;&quot;
-</span><span>    </span><span style="color:#859900;">var </span><span style="color:#b58900;">pantsColor</span><span style="color:#859900;">: </span><span style="color:#268bd2;">String </span><span style="color:#657b83;">= </span><span>&quot;&quot;
+<pre data-lang="kt" style="background-color:#383838;color:#e6e1dc;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#cc7833;">class </span><span>Outfit {
+</span><span>    </span><span style="color:#cc7833;">var </span><span>shirtColor</span><span style="color:#cc7833;">: </span><span style="font-style:italic;color:#6e9cbe;">String </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;&quot;
+</span><span>    </span><span style="color:#cc7833;">var </span><span>pantsColor</span><span style="color:#cc7833;">: </span><span style="font-style:italic;color:#6e9cbe;">String </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;&quot;
 </span><span>
-</span><span>    </span><span style="color:#859900;">fun </span><span style="color:#b58900;">printFit</span><span>(){
-</span><span>        println(&quot;</span><span style="color:#2aa198;">Shirt: </span><span style="color:#268bd2;">${shirtColor}</span><span style="color:#2aa198;"> Pants: </span><span style="color:#268bd2;">${pantsColor}</span><span>&quot;)
+</span><span>    </span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">printFit</span><span>(){
+</span><span>        println(</span><span style="color:#c1be91;">&quot;Shirt: </span><span style="font-style:italic;color:#fd971f;">${shirtColor}</span><span style="color:#c1be91;"> Pants: </span><span style="font-style:italic;color:#fd971f;">${pantsColor}</span><span style="color:#c1be91;">&quot;</span><span>)
 </span><span>    }
 </span><span>}
 </span><span>
-</span><span style="color:#93a1a1;">class </span><span style="color:#b58900;">Person</span><span> {
-</span><span>    </span><span style="color:#859900;">var </span><span style="color:#b58900;">name</span><span style="color:#859900;">: </span><span style="color:#268bd2;">String </span><span style="color:#657b83;">= </span><span>&quot;&quot;
-</span><span>    </span><span style="color:#859900;">var </span><span style="color:#b58900;">myOutfit</span><span style="color:#859900;">:</span><span> Outfit </span><span style="color:#657b83;">=</span><span> Outfit()
+</span><span style="color:#cc7833;">class </span><span>Person {
+</span><span>    </span><span style="color:#cc7833;">var </span><span>name</span><span style="color:#cc7833;">: </span><span style="font-style:italic;color:#6e9cbe;">String </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;&quot;
+</span><span>    </span><span style="color:#cc7833;">var </span><span>myOutfit</span><span style="color:#cc7833;">:</span><span> Outfit </span><span style="color:#cc7833;">=</span><span> Outfit()
 </span><span>
-</span><span>    </span><span style="color:#586e75;">// Outfit Builder
-</span><span>    </span><span style="color:#859900;">fun </span><span style="color:#b58900;">outfit</span><span>(</span><span style="color:#268bd2;">init</span><span style="color:#859900;">:</span><span> Outfit.() </span><span style="color:#859900;">-&gt; </span><span style="color:#268bd2;">Unit</span><span>)</span><span style="color:#859900;">:</span><span> Outfit{
-</span><span>        </span><span style="color:#859900;">val </span><span style="color:#b58900;">outfit </span><span style="color:#657b83;">=</span><span> Outfit()
-</span><span>        outfit</span><span style="color:#859900;">.</span><span>init()
-</span><span>        </span><span style="color:#b58900;">this</span><span style="color:#859900;">.</span><span>myOutfit </span><span style="color:#657b83;">=</span><span> outfit </span><span style="color:#586e75;">// once the Outfit is initilized we can use it to initialize myOutfit
-</span><span>        </span><span style="color:#859900;">return</span><span> outfit
+</span><span>    </span><span style="color:#95815e;">// Outfit Builder
+</span><span>    </span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">outfit</span><span>(</span><span style="font-style:italic;color:#fd971f;">init</span><span style="color:#cc7833;">:</span><span> Outfit.() </span><span style="color:#cc7833;">-&gt; </span><span style="font-style:italic;color:#6e9cbe;">Unit</span><span>)</span><span style="color:#cc7833;">:</span><span> Outfit{
+</span><span>        </span><span style="color:#cc7833;">val </span><span>outfit </span><span style="color:#cc7833;">=</span><span> Outfit()
+</span><span>        outfit</span><span style="color:#cc7833;">.</span><span>init()
+</span><span>        </span><span style="color:#6e9cbe;">this</span><span style="color:#cc7833;">.</span><span>myOutfit </span><span style="color:#cc7833;">=</span><span> outfit </span><span style="color:#95815e;">// once the Outfit is initilized we can use it to initialize myOutfit
+</span><span>        </span><span style="color:#cc7833;">return</span><span> outfit
 </span><span>    }
 </span><span>
-</span><span>    </span><span style="color:#859900;">fun </span><span style="color:#b58900;">printAll</span><span>(){
+</span><span>    </span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">printAll</span><span>(){
 </span><span>        println(name)
-</span><span>        </span><span style="color:#b58900;">this</span><span style="color:#859900;">.</span><span>myOutfit</span><span style="color:#859900;">.</span><span>printFit()
+</span><span>        </span><span style="color:#6e9cbe;">this</span><span style="color:#cc7833;">.</span><span>myOutfit</span><span style="color:#cc7833;">.</span><span>printFit()
 </span><span>    }
 </span><span>}
 </span><span>
-</span><span style="color:#586e75;">// Person Builder
-</span><span style="color:#859900;">fun </span><span style="color:#b58900;">person</span><span>(</span><span style="color:#268bd2;">init</span><span style="color:#859900;">:</span><span> Person.() </span><span style="color:#859900;">-&gt; </span><span style="color:#268bd2;">Unit</span><span>)</span><span style="color:#859900;">:</span><span> Person{
-</span><span>    </span><span style="color:#859900;">val </span><span style="color:#b58900;">person </span><span style="color:#657b83;">=</span><span> Person()
-</span><span>    person</span><span style="color:#859900;">.</span><span>init()
-</span><span>    </span><span style="color:#859900;">return</span><span> person
+</span><span style="color:#95815e;">// Person Builder
+</span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">person</span><span>(</span><span style="font-style:italic;color:#fd971f;">init</span><span style="color:#cc7833;">:</span><span> Person.() </span><span style="color:#cc7833;">-&gt; </span><span style="font-style:italic;color:#6e9cbe;">Unit</span><span>)</span><span style="color:#cc7833;">:</span><span> Person{
+</span><span>    </span><span style="color:#cc7833;">val </span><span>person </span><span style="color:#cc7833;">=</span><span> Person()
+</span><span>    person</span><span style="color:#cc7833;">.</span><span>init()
+</span><span>    </span><span style="color:#cc7833;">return</span><span> person
 </span><span>}
 </span><span>
-</span><span style="color:#859900;">fun </span><span style="color:#b58900;">main</span><span>() {
+</span><span style="color:#cc7833;">fun </span><span style="color:#ffc66d;">main</span><span>() {
 </span><span>    person {
-</span><span>        name </span><span style="color:#657b83;">= </span><span>&quot;</span><span style="color:#2aa198;">Joey</span><span>&quot;
+</span><span>        name </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;Joey&quot;
 </span><span>        outfit {
-</span><span>            shirtColor </span><span style="color:#657b83;">= </span><span>&quot;</span><span style="color:#2aa198;">Red</span><span>&quot;
-</span><span>            pantsColor </span><span style="color:#657b83;">= </span><span>&quot;</span><span style="color:#2aa198;">blue</span><span>&quot;
+</span><span>            shirtColor </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;Red&quot;
+</span><span>            pantsColor </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;blue&quot;
 </span><span>        }
-</span><span>    }</span><span style="color:#859900;">.</span><span>printAll()
+</span><span>    }</span><span style="color:#cc7833;">.</span><span>printAll()
 </span><span>}
 </span><span>
-</span><span style="color:#586e75;">// Output: 
+</span><span style="color:#95815e;">// Output: 
 </span><span>
-</span><span style="color:#586e75;">/*
-</span><span style="color:#586e75;">Joey
-</span><span style="color:#586e75;">Red-blue
-</span><span style="color:#586e75;">*/
+</span><span style="color:#95815e;">/*
+</span><span style="color:#95815e;">Joey
+</span><span style="color:#95815e;">Red-blue
+</span><span style="color:#95815e;">*/
 </span></code></pre>
 <p>By putting an outfit builder within the person class we can quickly initialize our objects without much verbosity at all and keep our code clean and readable. There's a cool example of this in the Kotlin docs <a href="https://kotlinlang.org/docs/type-safe-builders.html#how-it-works">here</a></p>
 <p>I'll be writing more about Kotlin as I find cool new things to work with as a way to document and solidify my understanding.</p>
