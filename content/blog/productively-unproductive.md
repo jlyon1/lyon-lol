@@ -10,4 +10,4 @@ In the past I would have felt guilty, like I'd let myself down. I have often fou
 
 Taking a beat and scaling back has worked wonders. I've had more fun at work than ever recently and I feel like there is more space for me to get done the things I really care about. Being productively unproductive when I can has really given me the space to focus on the things I want to get better at. 
 
-I am feeling more focused and productive than I have in a while making my goals feel much more achievable. 
+I am feeling more focused and productive than I have in a while, making my goals feel much more achievable. 
