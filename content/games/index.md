@@ -9,6 +9,8 @@ image_caption = "'You awake to find yourself standed on a mysterious alien plane
 
 In reverse chronological order, these are the games I've enjoyed recently, with my rating out of 5 and absolutely no context about the rating. If it's above a 3.5/5, it's worth it.
 
+* Dead Space (Remastered) - 3.5/5
+* Noita -> 4/5
 * FTL -> 4/5
 * Into The Breach -> 4/5
 * Oxygen Not Included -> 3/5

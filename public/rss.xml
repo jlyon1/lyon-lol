@@ -2,18 +2,31 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title></title>
-        <link>https://lyon.lol</link>
-        <description></description>
-        <generator>Zola</generator>
-        <language>en</language>
-        <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 29 Mar 2023 00:00:00 +0000</lastBuildDate>
-        <item>
-            <title>Contributing to a Collaborative Environment</title>
-            <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/collaborative-teams/</link>
-            <guid>https://lyon.lol/blog/collaborative-teams/</guid>
-            <description>&lt;p&gt;I have recently been reading “Think Again&amp;quot; by Adam Grant. One of the topics he talks about is Relationship Conflict (more interpersonal conflict, “I don’t like this person”) vs. Task Conflict (conflict about solving the problem at hand). Focus your team’s conflicts on the tasks at hand vs. interpersonal conflicts and fundamental identity-based disagreements. This idea resonated with me, and I recognized this concept immediately as a principle I developed in my work without realizing it. It’s a skill that I hope to cultivate more deliberately going forward.&lt;&#x2F;p&gt;
+      <link>https://lyon.lol</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Productively Unproductive</title>
+          <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/productively-unproductive/</link>
+          <guid>https://lyon.lol/blog/productively-unproductive/</guid>
+          <description>&lt;p&gt;I&#x27;m still here. I was close to burning myself out. After taking on a new role at work, handling a move, familial obligations and more, I found my battery to be completely drained. Some of my other goals (&lt;a href=&quot;&#x2F;blog&#x2F;first-post&#x2F;&quot;&gt;like this blog&lt;&#x2F;a&gt;) took a backseat. &lt;&#x2F;p&gt;
+&lt;p&gt;In the past I would have felt guilty, like I&#x27;d let myself down. I have often found it difficult to pare back what I am working on to a sustainable level. I often was drawn in by the productivity posts on Linkedin or Hacker News. They would often peddle the notion that you should grind through the challenge in order to come out on top. I still feel there is a time and a place for this attitude, but you must acknowledge the cost that comes with it. One of my goals with this blog was to work on it in a sustainable way, so that I could keep up the habit. Until recently I would&#x27;ve forced myself to grind through writing posts along with all of the other pet projects I wanted to do in an effort to make myself feel productive. Inevitably this would lead to me feeling burned out and I eventually would stop doing all of it.&lt;&#x2F;p&gt;
+&lt;p&gt;Taking a beat and scaling back has worked wonders. I&#x27;ve had more fun at work than ever recently and I feel like there is more space for me to get done the things I really care about. Being productively unproductive when I can has really given me the space to focus on the things I want to get better at. &lt;&#x2F;p&gt;
+&lt;p&gt;I am feeling more focused and productive than I have in a while making my goals feel much more achievable. &lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Contributing to a Collaborative Environment</title>
+          <pubDate>Wed, 29 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/collaborative-teams/</link>
+          <guid>https://lyon.lol/blog/collaborative-teams/</guid>
+          <description>&lt;p&gt;I have recently been reading “Think Again&amp;quot; by Adam Grant. One of the topics he talks about is Relationship Conflict (more interpersonal conflict, “I don’t like this person”) vs. Task Conflict (conflict about solving the problem at hand). Focus your team’s conflicts on the tasks at hand vs. interpersonal conflicts and fundamental identity-based disagreements. This idea resonated with me, and I recognized this concept immediately as a principle I developed in my work without realizing it. It’s a skill that I hope to cultivate more deliberately going forward.&lt;&#x2F;p&gt;
 &lt;p&gt;Focusing on Task Conflict and avoiding Relationship Conflict is something I can admit I’ve performed poorly at in the past. I have found that sometimes it’s hard to detach yourself from your ideas, making it easy to fall into the trap of being personally attached to your idea, resulting in a worse conflict. I can vividly remember a time in college while working on the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;wtg&#x2F;shuttletracker&quot;&gt;Shuttle Tracker&lt;&#x2F;a&gt;, when I found myself getting worked up over a code review. I was taking what was constructive criticism personally. Admittedly, I was new to the language and web development then, and I knew my code was not up to par. Looking back on this, I cringe at my behavior. I was in a Relationship Conflict mode-my identity was being attacked when I should have been in Task Conflict mode. Once I learned to let go of my attachment to specific details, I could take an analytical look at my solution and start to learn how to improve. Once I let go, I could utilize my colleagues&#x27; reviews to learn different perspectives, ideas, and strategies for developing software.
 I eventually came to realize often, in software, There is no “right way,” and learning how other people solve a specific problem has given me an appreciation for the focus and drive that others put into their work, even if they don’t do things the way I would have.&lt;&#x2F;p&gt;
 &lt;p&gt;As my career and open-source contributions developed, I learned to detach from the specific implementation and ideas while focusing on the overarching task. After I learned to do this, I made significant strides in my abilities as a software engineer and learned and adapted to new roles. Now I try to keep the following in mind:&lt;&#x2F;p&gt;
@@ -28,13 +41,14 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;p&gt;This works best for me if I can incorporate people’s solutions into my suggestions. Highlight the areas where they did well and frame suggestions as questions to build a better product. For example: &amp;quot;This solution is great; I like how you structured the data here; what do you think about leveraging that data structure more cleanly with a map-reduce instead of a for loop.” By explicitly communicating your common goal repeatedly and often, you can direct focus toward that goal. It helps keep the team focused on the bigger picture during these discussions.&lt;&#x2F;p&gt;
 &lt;p&gt;Going forward, I plan to define better how to maintain this team culture and keep everyone focused on a common goal.&lt;&#x2F;p&gt;
 </description>
-        </item>
-        <item>
-            <title>Header Images (AI Style)</title>
-            <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/header-images/</link>
-            <guid>https://lyon.lol/blog/header-images/</guid>
-            <description>&lt;h2 id=&quot;ai-everything&quot;&gt;~AI Everything~&lt;&#x2F;h2&gt;
+      </item>
+      <item>
+          <title>Header Images (AI Style)</title>
+          <pubDate>Mon, 20 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/header-images/</link>
+          <guid>https://lyon.lol/blog/header-images/</guid>
+          <description>&lt;h2 id=&quot;ai-everything&quot;&gt;~AI Everything~&lt;&#x2F;h2&gt;
 &lt;p&gt;Operational Update! I&#x27;m spicing things up on the blog. All I read on Twitter now is how people generate everything with AI and add it to every project. I&#x27;ve decided to jump on the trend so I can feel included. I&#x27;ve decided to add some header images to my blog. Unless otherwise specified, they will generally be AI-generated (and most should resemble me). How did I do this? I trained a Stable diffusion model using Dreambooth. I had to rent some time on a GPU-for-rent service, and I gave it around 25 pictures of myself. There are plenty of tutorials on this, and I will probably write about it at some point once I dig up my old repos since it was a fun project, but that is outside the scope of this post.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;meta-blog-content&quot;&gt;Meta-Blog Content&lt;&#x2F;h2&gt;
 &lt;p&gt;This post is about getting Zola to render images. This was pretty easy once I figured out the quirks. First, I added a new directory to my content directory instead of adding a markdown file, as I&#x27;ve done for previous posts. Then, within this directory, I created a main markdown file, &lt;code&gt;index.md&lt;&#x2F;code&gt;, and added any static assets to associate with the page to that directory. &lt;&#x2F;p&gt;
@@ -189,13 +203,14 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;code&#x2F;&quot;&gt;Infrastructure Time&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 </description>
-        </item>
-        <item>
-            <title>Meetings Arent All Bad*</title>
-            <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/why-have-meetings/</link>
-            <guid>https://lyon.lol/blog/why-have-meetings/</guid>
-            <description>&lt;p&gt;*But they definitely can be&lt;&#x2F;p&gt;
+      </item>
+      <item>
+          <title>Meetings Arent All Bad*</title>
+          <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/why-have-meetings/</link>
+          <guid>https://lyon.lol/blog/why-have-meetings/</guid>
+          <description>&lt;p&gt;*But they definitely can be&lt;&#x2F;p&gt;
 &lt;p&gt;The sentiment &amp;quot;I&#x27;m an engineer, and meetings just hamper my productivity&amp;quot; is pervasive. Many engineers you talk to (including myself) will likely say something similar to this when prompted on their opinions about meetings. My opinion on this has changed, but what&#x27;s critical is to make sure your meetings are effective. You need to focus on three major facets when deciding if you need to have that meeting or if it&#x27;s wasting everyone&#x27;s time. They are &lt;em&gt;scheduling&lt;&#x2F;em&gt;, &lt;em&gt;content&lt;&#x2F;em&gt;, and &lt;em&gt;takeaways&lt;&#x2F;em&gt;...&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Scheduling&lt;&#x2F;strong&gt;: Who? Where? and When? are the most important questions to ask here. Keep the invite list small but allow others to join if they want additional context. I have found that often if people aren&#x27;t required to be there, they will sometimes join because they want to learn or feel they have something to contribute. Your mileage may vary depending on the team&#x27;s culture, so find what works for you. &lt;&#x2F;p&gt;
 &lt;p&gt;Nowadays, the &amp;quot;where&amp;quot; is usually online, but I often enjoy the in-person brainstorming or explanation meeting when wrapping my head around more complex topics. In-person, meetings are also less exhausting to me than video calls, but this also varies from person to person. &lt;&#x2F;p&gt;
@@ -219,13 +234,14 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;&#x2F;ul&gt;
 &lt;p&gt;This is the strategy I am trying to follow now, but I always want to take a look and revise my approach. If you agree or disagree with anything here, don&#x27;t hesitate to get in touch with me. I&#x27;m always open to new ideas.&lt;&#x2F;p&gt;
 </description>
-        </item>
-        <item>
-            <title>What Makes an Effective Team Lead</title>
-            <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/what-makes-a-good-tl/</link>
-            <guid>https://lyon.lol/blog/what-makes-a-good-tl/</guid>
-            <description>&lt;p&gt;I (re)started at Wolfjaw Studios in August 2022 after a stint as a Software Engineer at Bloomberg. Tasked with leading a team of 2 engineers I was excited to dip my toes into Engineering Management as this had been a goal of mine for some time. Transitioning into this role has been an ongoing learning experience as it differs somewhat from my experience as an Individual Contributor.&lt;&#x2F;p&gt;
+      </item>
+      <item>
+          <title>What Makes an Effective Team Lead</title>
+          <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/what-makes-a-good-tl/</link>
+          <guid>https://lyon.lol/blog/what-makes-a-good-tl/</guid>
+          <description>&lt;p&gt;I (re)started at Wolfjaw Studios in August 2022 after a stint as a Software Engineer at Bloomberg. Tasked with leading a team of 2 engineers I was excited to dip my toes into Engineering Management as this had been a goal of mine for some time. Transitioning into this role has been an ongoing learning experience as it differs somewhat from my experience as an Individual Contributor.&lt;&#x2F;p&gt;
 &lt;p&gt;Writing on this blog keeps me accountable and straightens out my thoughts. Disclaimer: every situation is different so your mileage may vary. I will do my best to document this journey here.&lt;&#x2F;p&gt;
 &lt;p&gt;Since my first day as a Team Lead, one of my driving questions has been: &amp;quot;What does a good engineering team lead actually do?&amp;quot;. I&#x27;d imagine many people who are just stepping into this role have the same question. I have found this to be a surprisingly difficult question to answer, and I probably don&#x27;t have a perfect answer. Given this I try to keep the following at the forefront of my mind in an effort to achieve the goal of being a &amp;quot;good&amp;quot; team lead.&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -264,13 +280,14 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;&#x2F;ul&gt;
 &lt;p&gt;If you want to hear about any of these in particular first or just want to chat shoot me an email: &lt;code&gt;joey@lyon.lol&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 </description>
-        </item>
-        <item>
-            <title>Kotlin Builders for Fun and Profit</title>
-            <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/kotlin-builder/</link>
-            <guid>https://lyon.lol/blog/kotlin-builder/</guid>
-            <description>&lt;p&gt;I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.&lt;&#x2F;p&gt;
+      </item>
+      <item>
+          <title>Kotlin Builders for Fun and Profit</title>
+          <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/kotlin-builder/</link>
+          <guid>https://lyon.lol/blog/kotlin-builder/</guid>
+          <description>&lt;p&gt;I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.&lt;&#x2F;p&gt;
 &lt;p&gt;Consider the following basic class:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;kt&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-kt &quot;&gt;&lt;code class=&quot;language-kt&quot; data-lang=&quot;kt&quot;&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Person {
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;var &lt;&#x2F;span&gt;&lt;span&gt;name&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;String &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;&amp;quot;
@@ -353,13 +370,14 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;p&gt;By putting an outfit builder within the person class we can quickly initialize our objects without much verbosity at all and keep our code clean and readable. There&#x27;s a cool example of this in the Kotlin docs &lt;a href=&quot;https:&#x2F;&#x2F;kotlinlang.org&#x2F;docs&#x2F;type-safe-builders.html#how-it-works&quot;&gt;here&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;I&#x27;ll be writing more about Kotlin as I find cool new things to work with as a way to document and solidify my understanding.&lt;&#x2F;p&gt;
 </description>
-        </item>
-        <item>
-            <title>Infrastrucure Time</title>
-            <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/code/</link>
-            <guid>https://lyon.lol/blog/code/</guid>
-            <description>&lt;p&gt;Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I&#x27;m working on.&lt;&#x2F;p&gt;
+      </item>
+      <item>
+          <title>Infrastrucure Time</title>
+          <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/code/</link>
+          <guid>https://lyon.lol/blog/code/</guid>
+          <description>&lt;p&gt;Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I&#x27;m working on.&lt;&#x2F;p&gt;
 &lt;p&gt;When working on personal projects I usually don&#x27;t want to think too hard about deployments while still not being limited by my infrastructure. As such, this site and most everything else I put online is on a $4 DigitalOcean VPS with Docker and &lt;a href=&quot;https:&#x2F;&#x2F;dokku.com&#x2F;&quot;&gt;Dokku&lt;&#x2F;a&gt; installed. Shout out to &lt;a href=&quot;https:&#x2F;&#x2F;sidney.kochman.org&quot;&gt;@sidney&lt;&#x2F;a&gt; for introducing me to it years ago.&lt;&#x2F;p&gt;
 &lt;p&gt;Dokku is a great go-to self-hosted PaaS for simple projects. It works nicely with Docker and Buildpacks to provide a simple &lt;code&gt;git push&lt;&#x2F;code&gt; deployment mechanism with zero downtime deployments. Deploying an app with SSL is as simple as running:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;font-style:italic;color:#7c7865;&quot;&gt;# On the VPS
@@ -386,21 +404,22 @@ I eventually came to realize often, in software, There is no “right way,” an
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;This keeps it simple and low overhead to maintain.&lt;&#x2F;p&gt;
 </description>
-        </item>
-        <item>
-            <title>Another Software Engineer With a Blog</title>
-            <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
-            <link>https://lyon.lol/blog/first-post/</link>
-            <guid>https://lyon.lol/blog/first-post/</guid>
-            <description>&lt;p&gt;I intend to start casually blogging here to keep me on track with my goals and to satiate people&#x27;s desire to add blogs to their RSS readers. I plan to very casually write about the projects I am working on or just write my thoughts in a more long-form format to improve my writing and communication skills. This is moving very slowly, but it is moving. To kick things off...&lt;&#x2F;p&gt;
+      </item>
+      <item>
+          <title>Another Software Engineer With a Blog</title>
+          <pubDate>Sun, 12 Feb 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/first-post/</link>
+          <guid>https://lyon.lol/blog/first-post/</guid>
+          <description>&lt;p&gt;I intend to start casually blogging here to keep me on track with my goals and to satiate people&#x27;s desire to add blogs to their RSS readers. I plan to very casually write about the projects I am working on or just write my thoughts in a more long-form format to improve my writing and communication skills. This is moving very slowly, but it is moving. To kick things off...&lt;&#x2F;p&gt;
 &lt;p&gt;I am making an effort to contribute more to the Projects I use regularly, and just putting the crappy prototypes out there. I often find I&#x27;m limiting myself by thinking that I shouldn&#x27;t bother doing something because no one will use it or that it&#x27;s already been done better than I can. I have found this has hindered my progress or willingness to work on things I want to in multiple ways. &lt;&#x2F;p&gt;
 &lt;p&gt;Most Recently...&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;github.com&#x2F;jlyon1&#x2F;proto&quot;&gt;Proto&lt;&#x2F;a&gt; - A WIP command line tool to manage protobufs and eventually deploy them to a PaaS platform.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;first-post&#x2F;github.com&#x2F;jlyon1&#x2F;proto&quot;&gt;Proto&lt;&#x2F;a&gt; - A WIP command line tool to manage protobufs and eventually deploy them to a PaaS platform.&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;grpc&#x2F;grpc-kotlin&#x2F;pull&#x2F;375&quot;&gt;GRPC-Kotlin Bazel Build Windows&lt;&#x2F;a&gt; - An upstream contribution to support building GRPC-Kotlin on windows using Bazel.&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;I&#x27;m in between Github Profiles at the moment so my contributions are split between &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon12345&quot;&gt;@jlyon12345&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon1&quot;&gt;@jlyon1&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 </description>
-        </item>
+      </item>
     </channel>
 </rss>
