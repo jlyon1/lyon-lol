@@ -48,9 +48,9 @@
 <li>The user would be served a basic chat applicaiton that would send messages over a REST api.</li>
 <li>Users would be able to retrieve their messages via REST api.</li>
 </ol>
-<h2 id="step-1-setup-ejabberd-the-environment-for-development">Step 1 - Setup Ejabberd &amp; the environment for development</h2>
+<h3 id="step-1-setup-ejabberd-the-environment-for-development">Step 1 - Setup Ejabberd &amp; the environment for development</h3>
 <p>Prior to writing any go code I setup an ejabberd server with a very basic config. The only real changes I made were disabling TLS for testing purposes. The go application runs on the same machine as ejabberd and makes requests over the REST and XMPP apis.</p>
-<h2 id="step-2-sending-messages">Step 2 - Sending Messages</h2>
+<h3 id="step-2-sending-messages">Step 2 - Sending Messages</h3>
 <p>I am piggybacking on the ejabberd admin API to support a lot of this functionality. This code uses the <code>&quot;github.com/processone/ejabberd-api&quot;</code> package to communicate with ejabberd.</p>
 <p>To send a message the user makes a post request to <code>/api/v1/message</code> with the following body:</p>
 <pre data-lang="json" style="background-color:#383838;color:#e6e1dc;" class="language-json "><code class="language-json" data-lang="json"><span>{

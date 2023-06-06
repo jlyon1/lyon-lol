@@ -15,11 +15,11 @@ I started brainstorming the simplest workflow I could and decided I wanted the f
 
 
 
-## Step 1 - Setup Ejabberd & the environment for development
+### Step 1 - Setup Ejabberd & the environment for development
 
 Prior to writing any go code I setup an ejabberd server with a very basic config. The only real changes I made were disabling TLS for testing purposes. The go application runs on the same machine as ejabberd and makes requests over the REST and XMPP apis.
 
-## Step 2 - Sending Messages
+### Step 2 - Sending Messages
 
 I am piggybacking on the ejabberd admin API to support a lot of this functionality. This code uses the `"github.com/processone/ejabberd-api"` package to communicate with ejabberd.
 
