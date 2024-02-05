@@ -2,8 +2,6 @@
 title = "Header Images (AI Style)"
 slug = "header-images"
 date = 2023-03-20
-[taxonomies]
-tags = ["infra", "meta"]
 
 [extra]
 image_caption="AI Generated Header Images, Pretty Snazzy (Generated with Stable Diffusion + Dreambooth)"

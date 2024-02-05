@@ -2,8 +2,6 @@
 title = "Contributing to a Collaborative Environment"
 slug = "collaborative-teams"
 date = 2023-03-29
-[taxonomies]
-tags = ["managing", "reading-list"]
 
 [extra]
 image_caption="Team Work makes The Dream Work"
