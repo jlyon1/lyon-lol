@@ -5,16 +5,16 @@
 {% endblock head %}
 
 {% block content %}
-<a href="/"><< Home</a>
+<a class="underline" href="/"><- Home</a>
 {% for asset in page.assets -%}
 <div class="img-wrapper">
   <img src="{{asset}}" />
 </div>
 <p class="img-caption">{{ page.extra.image_caption }}</p>
 {%- endfor %}
-<h2 class="title">
+<h2 class="text-xl font-bold">
   {{ page.title }}
 </h2>
-<p class="subtitle"><light>{{ page.date }}</light></p>
+<p class="text-sm"><light>{{ page.date }}</light></p>
 {{ page.content | safe }}
 {% endblock content %}

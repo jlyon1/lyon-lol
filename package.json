@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.11",
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production npx tailwindcss -i styles/styles.css -o static/styles/styles.css",
+    "watch": "npx tailwindcss -i styles/main.css -o static/styles/main.css; zola serve"
+  },
+  "name": "lyon.lol",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "dokku@lyon.lol:lyon.lol",
+  "author": "Joey Lyon <joeylyon1@gmail.com>",
+  "license": "MIT"
+}

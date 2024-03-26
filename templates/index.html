@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% block head %}
-<meta property="og:title" content="Joseph Lyon" />
+<meta property="og:title" content="Joseph Lyon"/>
 <title>Joseph Lyon</title>
 
 {% endblock head %}
 
 {% block content %}
-<p>NYC x Saratoga // <a href="https://github.com/jlyon1">Github</a> // <a href="https://www.linkedin.com/in/joseph-lyon-418960156/">LinkedIn</a> // <a href="/rss.xml">RSS</a> // <a href="/games">Games</a>
-<h2>About</h2>
-<p class="text">I am a software engineer based in Saratoga Springs. In my career, I have had the opportunity to work in a diverse range of industries, including finance, ad tech, and video games. I am deeply committed to ensuring that my work is high quality, and I take great care to pay close attention to detail.</p>
-<p class="text">My most recent experience includes working at Bloomberg, where I contributed to the development of trading automation systems. The projects I worked on there were challenging, but I was able to apply my technical expertise and problem-solving skills to deliver results that exceeded expectations. Now I work at Wolfjaw Studios, a leading video game development company. There, I collaborate with a talented team of developers to bring exciting new games to life.</p>
-<h2>Posts</h2>
-<div class="articles">
-{% set blog_section = get_section(path="blog/_index.md") %}
-{% for year, posts in blog_section.pages | group_by(attribute="year") %}
-{% for post in posts %}
-<div class="entry"><span style="font-weight: bold;">{{post.date}}</span> // <a href="{{ post.permalink }}">{{ post.title }}</a></div>
+<h2 class="text-xl font-bold my-2">About</h2>
+<p class="my-2">I am an Engineering Manager based in Saratoga Springs. I have had the opportunity to work in
+    a diverse range of industries, including finance, ad tech, and video games. I am passionate about developing and leading engineering
+    teams to help the members of their reach their maximum potential and achieve their career goals. I'm currently building games over at <a class="underline" href="https://www.wolfjawstudios.com">Wolfjaw Studios</a> where I am Director of Engineering.</p>
 
-{% endfor %}
-{% endfor %}
+<h2 class="text-xl font-bold my-2">Posts</h2>
+<div class="articles">
+    {% set blog_section = get_section(path="blog/_index.md") %}
+    {% for year, posts in blog_section.pages | group_by(attribute="year") %}
+    {% for post in posts %}
+    <div class="entry"><a class="underline" href="{{ post.permalink }}">{{ post.title }}</a></div>
+    {% endfor %}
+    {% endfor %}
 </div>
 
 {% endblock content %}
