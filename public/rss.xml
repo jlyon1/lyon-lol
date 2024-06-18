@@ -7,7 +7,44 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Fri, 19 May 2023 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Tue, 18 Jun 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Simple Security for Personal Projects</title>
+          <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/simple-security-for-personal-projects/</link>
+          <guid>https://lyon.lol/blog/simple-security-for-personal-projects/</guid>
+          <description>&lt;p&gt;I am often asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
+like geocoding addresses into latitude longitude points to put pins on a map for something like the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;wtg&#x2F;shuttletracker&quot;&gt;Shuttle Tracker&lt;&#x2F;a&gt;, or a simple transaction ledger for budgeting. These scripts are almost always
+driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending an url that &lt;em&gt;just works&lt;&#x2F;em&gt; is much easier than any other method of distribution.&lt;&#x2F;p&gt;
+&lt;p&gt;Sometimes this data is sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.&lt;&#x2F;p&gt;
+&lt;p&gt;In response, I decided to create my own tailor-made solution. &lt;&#x2F;p&gt;
+&lt;p&gt;Introducing &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon1&#x2F;auth-proxy-gate&quot;&gt;auth-proxy-gate&lt;&#x2F;a&gt; (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tech&quot;&gt;Tech&lt;&#x2F;h2&gt;
+&lt;p&gt;I wanted to be able to write this in an afternoon, so I picked simple tech I&#x27;m familiar with:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;etcd-io&#x2F;bbolt&quot;&gt;Boltdb&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;a-h&#x2F;templ&quot;&gt;Templ&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I have also limited the initial implementation to just Google OAuth Providers. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;p&gt;First set up a &lt;a href=&quot;https:&#x2F;&#x2F;developers.google.com&#x2F;identity&#x2F;protocols&#x2F;oauth2&quot;&gt;Google OAuth Application&lt;&#x2F;a&gt;. I have requested pretty minimal permissions since I really only need an email to verify. &lt;&#x2F;p&gt;
+&lt;p&gt;In my case I set up two redirect urls &lt;em&gt;these can be set on the credentials tab of the oauth consent screen configuration&lt;&#x2F;em&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;http:&#x2F;&#x2F;localhost:8081&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google - for local testing
+&lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;color:#86c20e;&quot;&gt;https:&#x2F;&#x2F;service.lyon.lol&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google&lt;&#x2F;span&gt;&lt;span&gt; - fake url of the deployed service
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After which grab your Client ID and Client Secret.&lt;&#x2F;p&gt;
+&lt;p&gt;We can then run the application like this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;templ generate&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;; &lt;&#x2F;span&gt;&lt;span&gt;go build .
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;.&#x2F;auth-proxy-gate&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --secret &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;GOOGLE SECRET&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --redirect &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;http:&#x2F;&#x2F;localhost:8081&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --clientid &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;GOOGLE_CLIENT_ID&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --secretKey &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;replace_me_with_a_secret&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --proxy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;www.google.com&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt; --allowList &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c1be91;&quot;&gt;&amp;quot;email@example.com&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example &lt;a href=&quot;https:&#x2F;&#x2F;geocode.lyonsoftworks.com&quot;&gt;https:&#x2F;&#x2F;geocode.lyonsoftworks.com&lt;&#x2F;a&gt; and add 
+any authorized users to the allow-list.&lt;&#x2F;p&gt;
+&lt;p&gt;My next improvements will be to switch to a sqlite database, add a config file, and then add additional oauth providers.&lt;&#x2F;p&gt;
+</description>
+      </item>
       <item>
           <title>Productively Unproductive</title>
           <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>

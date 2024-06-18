@@ -1,0 +1,87 @@
+
+<html>
+    <head>
+        <link rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<!--        <script src="https://cdn.tailwindcss.com"></script>-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;800;900&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+        
+<meta property="og:title" content="Simple Security for Personal Projects" />
+<title>Simple Security for Personal Projects</title>
+<meta name="title" content="Simple Security for Personal Projects" />
+<meta name="description" content="" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;simple-security-for-personal-projects&#x2F;" />
+<meta property="og:title" content="Simple Security for Personal Projects" />
+<meta property="og:description" content="" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https:&#x2F;&#x2F;lyon.lol&#x2F;blog&#x2F;simple-security-for-personal-projects&#x2F;" />
+<meta property="twitter:title" content="Simple Security for Personal Projects" />
+<meta property="twitter:description" content="" />
+
+
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script defer data-domain="lyon.lol" src="https://plausible.io/js/script.js"></script>
+    </head>
+    <body>
+        
+<div class="flex row justify-center w-full">
+  <div class="max-w-prose w-full text-md px-5">
+    <h1>Joseph Lyon</h1>
+
+    <a class="underline" href="/"><- Home</a>
+    
+    <h1 class="font-bold mt-4">
+      Simple Security for Personal Projects
+    </h1>
+    <p class="text-sm"><light>2024-06-18</light></p>
+    <div class="w-full relative">
+      <p>I am often asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
+like geocoding addresses into latitude longitude points to put pins on a map for something like the <a href="https://github.com/wtg/shuttletracker">Shuttle Tracker</a>, or a simple transaction ledger for budgeting. These scripts are almost always
+driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending an url that <em>just works</em> is much easier than any other method of distribution.</p>
+<p>Sometimes this data is sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.</p>
+<p>In response, I decided to create my own tailor-made solution. </p>
+<p>Introducing <a href="https://github.com/jlyon1/auth-proxy-gate">auth-proxy-gate</a> (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.</p>
+<h2 id="tech">Tech</h2>
+<p>I wanted to be able to write this in an afternoon, so I picked simple tech I'm familiar with:</p>
+<ul>
+<li>Go</li>
+<li><a href="https://github.com/etcd-io/bbolt">Boltdb</a></li>
+<li><a href="https://github.com/a-h/templ">Templ</a></li>
+</ul>
+<p>I have also limited the initial implementation to just Google OAuth Providers. </p>
+<h2 id="how-it-works">How it works</h2>
+<p>First set up a <a href="https://developers.google.com/identity/protocols/oauth2">Google OAuth Application</a>. I have requested pretty minimal permissions since I really only need an email to verify. </p>
+<p>In my case I set up two redirect urls <em>these can be set on the credentials tab of the oauth consent screen configuration</em>:</p>
+<pre data-lang="markdown" style="background-color:#383838;color:#e6e1dc;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
+</span><span style="text-decoration:underline;color:#86c20e;">https://service.lyon.lol/api/v1/auth/callback?provider=google</span><span> - fake url of the deployed service
+</span></code></pre>
+<p>After which grab your Client ID and Client Secret.</p>
+<p>We can then run the application like this:</p>
+<pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span>templ generate</span><span style="color:#cc7833;">; </span><span>go build .
+</span><span>
+</span><span>./auth-proxy-gate</span><span style="font-style:italic;color:#fd971f;"> --secret </span><span style="color:#c1be91;">&quot;GOOGLE SECRET&quot;</span><span style="font-style:italic;color:#fd971f;"> --redirect </span><span style="color:#c1be91;">&quot;http://localhost:8081&quot;</span><span style="font-style:italic;color:#fd971f;"> --clientid </span><span style="color:#c1be91;">&quot;GOOGLE_CLIENT_ID&quot;</span><span style="font-style:italic;color:#fd971f;"> --secretKey </span><span style="color:#c1be91;">&quot;replace_me_with_a_secret&quot;</span><span style="font-style:italic;color:#fd971f;"> --proxy </span><span style="color:#c1be91;">&quot;https://www.google.com&quot;</span><span style="font-style:italic;color:#fd971f;"> --allowList </span><span style="color:#c1be91;">&quot;email@example.com&quot;
+</span></code></pre>
+<p>This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example <a href="https://geocode.lyonsoftworks.com">https://geocode.lyonsoftworks.com</a> and add 
+any authorized users to the allow-list.</p>
+<p>My next improvements will be to switch to a sqlite database, add a config file, and then add additional oauth providers.</p>
+
+    </div>
+  </div>
+</div>
+
+
+
+    </body>
+</html>
