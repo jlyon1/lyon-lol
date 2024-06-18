@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 {% block head %}
-<meta property="og:title" content="Joseph Lyon"/>
-<title>Joseph Lyon</title>
+<meta property="og:title" content="{{ section.title }}" />
+<title>{{ section.title }}</title>
+<meta name="title" content="{{ section.title }}" />
+<meta name="description" content="{{section.description}}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ config.base_url }}{{ current_path }}" />
+<meta property="og:title" content="{{section.title}}" />
+<meta property="og:description" content="{{section.description}}" />
+
+<!-- Twitter -->
+<meta property="twitter:url" content="{{ config.base_url }}{{ current_path }}" />
+<meta property="twitter:title" content="{{section.title}}" />
+<meta property="twitter:description" content="{{section.description}}" />
 {% endblock head %}
 
 {% block content %}
