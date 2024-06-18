@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="flex row justify-center w-full">
-  <div class="max-w-prose text-md">
+  <div class="max-w-prose w-full text-md px-5">
     <h1>Joseph Lyon</h1>
 
     <a class="underline" href="/"><- Home</a>
@@ -21,7 +21,9 @@
       {{ page.title }}
     </h2>
     <p class="text-sm"><light>{{ page.date }}</light></p>
-    {{ page.content | safe }}
+    <div class="w-full relative">
+      {{ page.content | safe }}
+    </div>
   </div>
 </div>
 

@@ -544,6 +544,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.relative {
+  position: relative;
+}
+
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -578,6 +582,11 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .pt-5 {
@@ -629,6 +638,7 @@ pre{
   overflow: scroll;
   padding: 10px;
   border-radius: 5px;
+  width: 100%;
 }
 
 h1{
