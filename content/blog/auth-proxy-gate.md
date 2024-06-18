@@ -4,7 +4,7 @@ slug = "simple-security-for-personal-projects"
 date = 2024-06-18
 +++
 
-I am often asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
+I am occasionally asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
 like geocoding addresses into latitude longitude points to put pins on a map for something like the [Shuttle Tracker](https://github.com/wtg/shuttletracker), or a simple transaction ledger for budgeting. These scripts are almost always
 driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending a URL that _just works_ is much easier than any other method of distribution.
 
