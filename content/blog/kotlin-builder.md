@@ -2,6 +2,7 @@
 title = "Kotlin Builders for Fun and Profit"
 slug = "kotlin-builder"
 date = 2023-02-19
+draft = true
 +++
 
 I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.

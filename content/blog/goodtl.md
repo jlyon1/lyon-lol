@@ -23,16 +23,16 @@ Note things like "write jira tickets" and "prescribe tasks to engineers" are mis
 
 One of the most important things a team lead does, if the people that report to you don't feel seen or communicated with, things can fall apart really quickly. This point is deceptively simple and is one of the biggest challenges to being a team lead in my opinion. Achieving this is challenging. Without going into specific cadences, my strategy is as follows
 
-1) Go into every meeting with a list of topics to cover, write them down, keep on track and take notes. Write down everything, even the most simple things, you will forget.
-2) Always deliver feedback as constructively as possible, there is generally no reason to negatively refer to someone's work, rather highlight what can be improved by framing it as a constructive process towards building something great.
-3) Always **slow down** when addressing your responsibilities. If you are context switching frequently or working on some code task, put it down and prioritize this. It's better to keep communication consistent and if you are overwhelmed or burned out it's likely noticeable by your team and will rub off on them before long.
+* Go into every meeting with a list of topics to cover, write them down, keep on track and take notes. Write down everything, even the most simple things, you will forget.
+* Always deliver feedback as constructively as possible, there is generally no reason to negatively refer to someone's work, rather highlight what can be improved by framing it as a constructive process towards building something great.
+* Always **slow down** when addressing your responsibilities. If you are context switching frequently or working on some code task, put it down and prioritize this. It's better to keep communication consistent and if you are overwhelmed or burned out it's likely noticeable by your team and will rub off on them before long.
 
 ## Highlight and Broadcast direct reports (and team's) achievements and blockers.
 
 Another hugely important facet of leading a team, this point is crucial. In my opinion it's always worth it to highlight your team member's achievements over your own and over the teams. Be as humble as possible for yourself and make sure they are getting the credit they deserve. Their achievements will speak for you.
 
-1) Reflect your team's successes up the ladder, highlighting their accomplishments to your manager makes you look good, and gives your team the credit they deserve. Keep in mind the culture of the company when communicating outside of your team, a big part of your Job is navigating the org structure for the benefit of your team.
-2) Immediately raise blockers and try your best to remove them. No one likes to be blocked and if it reaches you it's probably something you need to help handle. Removing them may be as simple as making yourself available for a quick Q/A with the engineer to rubber duck it out or provide a new perspective.
+* Reflect your team's successes up the ladder, highlighting their accomplishments to your manager makes you look good, and gives your team the credit they deserve. Keep in mind the culture of the company when communicating outside of your team, a big part of your Job is navigating the org structure for the benefit of your team. 
+* Immediately raise blockers and try your best to remove them. No one likes to be blocked and if it reaches you it's probably something you need to help handle. Removing them may be as simple as making yourself available for a quick Q/A with the engineer to rubber duck it out or provide a new perspective.
 
 ## Communicate the progress of your team to stakeholders.
 

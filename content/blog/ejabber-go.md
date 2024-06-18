@@ -2,6 +2,7 @@
 title = "Ejabberd + Go"
 slug = "ejabberd-go"
 date = 2023-06-05
+draft = true
 +++
 
 Recently I stumbled upon some cool uses of [ejabberd](https://www.ejabberd.im). Immediately I became intrigued and wanted to see what I could do with it. I have always been a big fan of erlang & elixir, so seeing it used in this usecase was very exciting to me. My biggest complaint was that the xmpp protocol was difficult to digest, so I wanted to simplify things. This blog is a quick writeup of what I want to accomplish and how I send messages in this project. Once I am happy with the state of the codebase I will publish it on github.
