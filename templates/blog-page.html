@@ -2,6 +2,21 @@
 {% block head %}
 <meta property="og:title" content="{{ page.title }}" />
 <title>{{ page.title }}</title>
+<meta name="title" content="{{ page.title }}" />
+<meta name="description" content="{{page.description}}" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ config.base_url }}{{ current_path }}" />
+<meta property="og:title" content="{{page.title}}" />
+<meta property="og:description" content="{{page.description}}" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{ config.base_url }}{{ current_path }}" />
+<meta property="twitter:title" content="{{page.title}}" />
+<meta property="twitter:description" content="{{page.description}}" />
+
 
 {% endblock head %}
 

@@ -2,6 +2,7 @@
 title = "Productively Unproductive"
 slug = "productively-unproductive"
 date = 2023-05-19
+description = "I'm still here. I was close to burning myself out. After taking on a new role at work, handling a move, familial obligations and more, I found my battery to be completely drained..."
 +++
 
 I'm still here. I was close to burning myself out. After taking on a new role at work, handling a move, familial obligations and more, I found my battery to be completely drained. Some of my other goals ([like this blog](/blog/first-post/)) took a backseat. 
