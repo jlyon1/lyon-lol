@@ -14,7 +14,7 @@ In response, I decided to create my own tailor-made solution.
 
 Introducing [auth-proxy-gate](https://github.com/jlyon1/auth-proxy-gate) (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.
 
-## Tech
+### Tech
 
 I wanted to be able to write this in an afternoon, so I picked simple tech I'm familiar with:
 
@@ -24,7 +24,7 @@ I wanted to be able to write this in an afternoon, so I picked simple tech I'm f
 
 I have also limited the initial implementation to just Google OAuth Providers. 
 
-## How it works
+### How it works
 
 First set up a [Google OAuth Application](https://developers.google.com/identity/protocols/oauth2). I have requested pretty minimal permissions since I really only need an email to verify. 
 

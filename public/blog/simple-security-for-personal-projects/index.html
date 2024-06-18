@@ -53,7 +53,7 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 <p>Sometimes these data are sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.</p>
 <p>In response, I decided to create my own tailor-made solution. </p>
 <p>Introducing <a href="https://github.com/jlyon1/auth-proxy-gate">auth-proxy-gate</a> (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.</p>
-<h2 id="tech">Tech</h2>
+<h3 id="tech">Tech</h3>
 <p>I wanted to be able to write this in an afternoon, so I picked simple tech I'm familiar with:</p>
 <ul>
 <li>Go</li>
@@ -61,7 +61,7 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 <li><a href="https://github.com/a-h/templ">Templ</a></li>
 </ul>
 <p>I have also limited the initial implementation to just Google OAuth Providers. </p>
-<h2 id="how-it-works">How it works</h2>
+<h3 id="how-it-works">How it works</h3>
 <p>First set up a <a href="https://developers.google.com/identity/protocols/oauth2">Google OAuth Application</a>. I have requested pretty minimal permissions since I really only need an email to verify. </p>
 <p>In my case I set up two redirect urls <em>these can be set on the credentials tab of the oauth consent screen configuration</em>:</p>
 <pre data-lang="markdown" style="background-color:#383838;color:#e6e1dc;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>http://localhost:8081/api/v1/auth/callback?provider=google - for local testing

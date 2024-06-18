@@ -20,7 +20,7 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 &lt;p&gt;Sometimes these data are sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.&lt;&#x2F;p&gt;
 &lt;p&gt;In response, I decided to create my own tailor-made solution. &lt;&#x2F;p&gt;
 &lt;p&gt;Introducing &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon1&#x2F;auth-proxy-gate&quot;&gt;auth-proxy-gate&lt;&#x2F;a&gt; (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;tech&quot;&gt;Tech&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;tech&quot;&gt;Tech&lt;&#x2F;h3&gt;
 &lt;p&gt;I wanted to be able to write this in an afternoon, so I picked simple tech I&#x27;m familiar with:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;Go&lt;&#x2F;li&gt;
@@ -28,7 +28,7 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;a-h&#x2F;templ&quot;&gt;Templ&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;I have also limited the initial implementation to just Google OAuth Providers. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h3&gt;
 &lt;p&gt;First set up a &lt;a href=&quot;https:&#x2F;&#x2F;developers.google.com&#x2F;identity&#x2F;protocols&#x2F;oauth2&quot;&gt;Google OAuth Application&lt;&#x2F;a&gt;. I have requested pretty minimal permissions since I really only need an email to verify. &lt;&#x2F;p&gt;
 &lt;p&gt;In my case I set up two redirect urls &lt;em&gt;these can be set on the credentials tab of the oauth consent screen configuration&lt;&#x2F;em&gt;:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;http:&#x2F;&#x2F;localhost:8081&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google - for local testing
