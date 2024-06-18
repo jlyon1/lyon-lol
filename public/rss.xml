@@ -16,8 +16,8 @@
           <guid>https://lyon.lol/blog/simple-security-for-personal-projects/</guid>
           <description>&lt;p&gt;I am often asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
 like geocoding addresses into latitude longitude points to put pins on a map for something like the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;wtg&#x2F;shuttletracker&quot;&gt;Shuttle Tracker&lt;&#x2F;a&gt;, or a simple transaction ledger for budgeting. These scripts are almost always
-driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending an url that &lt;em&gt;just works&lt;&#x2F;em&gt; is much easier than any other method of distribution.&lt;&#x2F;p&gt;
-&lt;p&gt;Sometimes this data is sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.&lt;&#x2F;p&gt;
+driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending a URL that &lt;em&gt;just works&lt;&#x2F;em&gt; is much easier than any other method of distribution.&lt;&#x2F;p&gt;
+&lt;p&gt;Sometimes these data are sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.&lt;&#x2F;p&gt;
 &lt;p&gt;In response, I decided to create my own tailor-made solution. &lt;&#x2F;p&gt;
 &lt;p&gt;Introducing &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jlyon1&#x2F;auth-proxy-gate&quot;&gt;auth-proxy-gate&lt;&#x2F;a&gt; (name pending). This project aims to be a simple OAuth login protected proxy, if you are logged in, your requests will be proxied to whatever service we are protecting, otherwise you get a 401.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;tech&quot;&gt;Tech&lt;&#x2F;h2&gt;

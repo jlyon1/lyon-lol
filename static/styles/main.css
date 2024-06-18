@@ -624,6 +624,10 @@ html {
   color: #223344;
 }
 
+a{
+  text-decoration: underline;
+}
+
 p {
   margin-bottom: 10px;
   margin-top: 10px;

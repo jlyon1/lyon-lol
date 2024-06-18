@@ -22,17 +22,19 @@
     <div class="justify-center max-w-prose text-base px-5">
         {{ section.content | safe }}
 
-        <h2 class="text-lg">Posts</h2>
+        <h3>Posts</h3>
         <div>
-            {% set blog_section = get_section(path="blog/_index.md") %}
-            {% for year, posts in blog_section.pages | group_by(attribute="year") %}
-            {% for post in posts %}
-            <div><a class="underline" href="{{ post.permalink }}">{{ post.title }}</a></div>
-            {% endfor %}
-            {% endfor %}
+            <ul>
+                {% set blog_section = get_section(path="blog/_index.md") %}
+                {% for year, posts in blog_section.pages | group_by(attribute="year") %}
+                {% for post in posts %}
+                    <li><a class="underline" href="{{ post.permalink }}">{{ post.title }}</a></li>
+                {% endfor %}
+                {% endfor %}
+            </ul>
         </div>
 
-        <h2>Elsewhere</h2>
+        <h3>Elsewhere</h3>
 
         <div>
         <span class="flex items-center">

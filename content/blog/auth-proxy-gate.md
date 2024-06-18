@@ -6,9 +6,9 @@ date = 2024-06-18
 
 I am often asked to build scripts for people (or I offer to do it just for fun). Usually these scripts tackle simple, menial things
 like geocoding addresses into latitude longitude points to put pins on a map for something like the [Shuttle Tracker](https://github.com/wtg/shuttletracker), or a simple transaction ledger for budgeting. These scripts are almost always
-driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending an url that _just works_ is much easier than any other method of distribution.
+driven by a flask app to provide a basic UI for my less technically savvy friends and family, sending a URL that _just works_ is much easier than any other method of distribution.
 
-Sometimes this data is sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.
+Sometimes these data are sensitive, or calls an API that will cost me money, and I get uncomfortable publishing it to the general internet without some type of security. Despite my searching, I have not found a simple way to do this type of blocking.
 
 In response, I decided to create my own tailor-made solution. 
 

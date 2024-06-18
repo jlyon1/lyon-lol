@@ -9,7 +9,7 @@ description = "I am an Engineering Manager based in Saratoga Springs. I have had
 
 ## Engineering Manager
 
-## About
+### About
 
 I am an Engineering Manager based in Saratoga Springs. I have had the opportunity to work in
 a diverse range of industries, including finance, ad tech, and video games. I am passionate about developing and
