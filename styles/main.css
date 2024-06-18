@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 html {
-    background: #f6f3f3;
     color: #223344;
 }
 
@@ -20,4 +19,21 @@ pre{
     overflow: scroll;
     padding: 10px;
     border-radius: 5px;
+}
+
+h1{
+    font-size: 30px;
+    margin-bottom: 10px
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
 }

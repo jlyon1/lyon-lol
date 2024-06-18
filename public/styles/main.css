@@ -544,21 +544,6 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.my-3 {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .mr-1 {
   margin-right: 0.25rem;
 }
@@ -583,12 +568,8 @@ video {
   width: 100%;
 }
 
-.max-w-2xl {
-  max-width: 42rem;
-}
-
-.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.max-w-prose {
+  max-width: 65ch;
 }
 
 .items-center {
@@ -599,13 +580,18 @@ video {
   justify-content: center;
 }
 
-.text-center {
-  text-align: center;
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -622,23 +608,11 @@ video {
   font-weight: 700;
 }
 
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
-}
-
 .underline {
   text-decoration-line: underline;
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 html {
-  background: #f6f3f3;
   color: #223344;
 }
 
@@ -657,14 +631,19 @@ pre{
   border-radius: 5px;
 }
 
-.hover\:scale-105:hover {
-  --tw-scale-x: 1.05;
-  --tw-scale-y: 1.05;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+h1{
+  font-size: 30px;
+  margin-bottom: 10px
 }
 
-.hover\:scale-125:hover {
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 5px;
 }

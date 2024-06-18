@@ -13,27 +13,26 @@
 <meta property="og:title" content="Kotlin Builders for Fun and Profit" />
 <title>Kotlin Builders for Fun and Profit</title>
 
+
         
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer data-domain="lyon.lol" src="https://plausible.io/js/script.js"></script>
     </head>
-    <body class="flex justify-center w-full">
-        <div class="mx-4">
-            <div class="my-3 text-center items-center">
-                <h1 class="text-4xl text-center">Joseph Lyon</h1>
-                <h2 class="text-xl text-gray-400">Engineering Manager</h2>
-            </div>
-            <div class="pure-u-1 max-w-2xl">
-                
-<a class="underline" href="/"><- Home</a>
+    <body>
+        
+<div class="flex row justify-center w-full">
+  <div class="max-w-prose text-md">
+    <h1>Joseph Lyon</h1>
 
-<h2 class="text-xl font-bold">
-  Kotlin Builders for Fun and Profit
-</h2>
-<p class="text-sm"><light>2023-02-19</light></p>
-<p>I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.</p>
+    <a class="underline" href="/"><- Home</a>
+    
+    <h2 class="text-xl font-bold">
+      Kotlin Builders for Fun and Profit
+    </h2>
+    <p class="text-sm"><light>2023-02-19</light></p>
+    <p>I have been using Kotlin pretty often recently and have very much enjoyed working with the language. So much so that I will likely reach for it over Go for my next personal project. There are many ways in which Kotlin makes data transformations and concurrency simple without all of the verbosity often associated with Go. One of my favorite examples of this is the builder pattern.</p>
 <p>Consider the following basic class:</p>
 <pre data-lang="kt" style="background-color:#383838;color:#e6e1dc;" class="language-kt "><code class="language-kt" data-lang="kt"><span style="color:#cc7833;">class </span><span>Person {
 </span><span>    </span><span style="color:#cc7833;">var </span><span>name</span><span style="color:#cc7833;">: </span><span style="font-style:italic;color:#6e9cbe;">String </span><span style="color:#cc7833;">= </span><span style="color:#c1be91;">&quot;&quot;
@@ -116,9 +115,10 @@
 <p>By putting an outfit builder within the person class we can quickly initialize our objects without much verbosity at all and keep our code clean and readable. There's a cool example of this in the Kotlin docs <a href="https://kotlinlang.org/docs/type-safe-builders.html#how-it-works">here</a></p>
 <p>I'll be writing more about Kotlin as I find cool new things to work with as a way to document and solidify my understanding.</p>
 
+  </div>
+</div>
 
-            </div>
-        </div>
+
 
     </body>
 </html>

@@ -13,27 +13,26 @@
 <meta property="og:title" content="Ejabberd + Go" />
 <title>Ejabberd + Go</title>
 
+
         
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer data-domain="lyon.lol" src="https://plausible.io/js/script.js"></script>
     </head>
-    <body class="flex justify-center w-full">
-        <div class="mx-4">
-            <div class="my-3 text-center items-center">
-                <h1 class="text-4xl text-center">Joseph Lyon</h1>
-                <h2 class="text-xl text-gray-400">Engineering Manager</h2>
-            </div>
-            <div class="pure-u-1 max-w-2xl">
-                
-<a class="underline" href="/"><- Home</a>
+    <body>
+        
+<div class="flex row justify-center w-full">
+  <div class="max-w-prose text-md">
+    <h1>Joseph Lyon</h1>
 
-<h2 class="text-xl font-bold">
-  Ejabberd + Go
-</h2>
-<p class="text-sm"><light>2023-06-05</light></p>
-<p>Recently I stumbled upon some cool uses of <a href="https://www.ejabberd.im">ejabberd</a>. Immediately I became intrigued and wanted to see what I could do with it. I have always been a big fan of erlang &amp; elixir, so seeing it used in this usecase was very exciting to me. My biggest complaint was that the xmpp protocol was difficult to digest, so I wanted to simplify things. This blog is a quick writeup of what I want to accomplish and how I send messages in this project. Once I am happy with the state of the codebase I will publish it on github.</p>
+    <a class="underline" href="/"><- Home</a>
+    
+    <h2 class="text-xl font-bold">
+      Ejabberd + Go
+    </h2>
+    <p class="text-sm"><light>2023-06-05</light></p>
+    <p>Recently I stumbled upon some cool uses of <a href="https://www.ejabberd.im">ejabberd</a>. Immediately I became intrigued and wanted to see what I could do with it. I have always been a big fan of erlang &amp; elixir, so seeing it used in this usecase was very exciting to me. My biggest complaint was that the xmpp protocol was difficult to digest, so I wanted to simplify things. This blog is a quick writeup of what I want to accomplish and how I send messages in this project. Once I am happy with the state of the codebase I will publish it on github.</p>
 <p>I started brainstorming the simplest workflow I could and decided I wanted the following:</p>
 <ol>
 <li>Users can navigate to <code>/chat/{from_username}/{to_username}</code>.</li>
@@ -91,9 +90,10 @@
 <p>A more conventional approach would involve logging in on behalf of the user and sending messages using XMPP. But where's the fun in that?</p>
 <p>I plan to write a detailed blog post about this implementation in the future. For now, this simple solution provides impressive functionality.</p>
 
+  </div>
+</div>
 
-            </div>
-        </div>
+
 
     </body>
 </html>

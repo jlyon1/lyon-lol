@@ -13,27 +13,26 @@
 <meta property="og:title" content="Infrastrucure Time" />
 <title>Infrastrucure Time</title>
 
+
         
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script defer data-domain="lyon.lol" src="https://plausible.io/js/script.js"></script>
     </head>
-    <body class="flex justify-center w-full">
-        <div class="mx-4">
-            <div class="my-3 text-center items-center">
-                <h1 class="text-4xl text-center">Joseph Lyon</h1>
-                <h2 class="text-xl text-gray-400">Engineering Manager</h2>
-            </div>
-            <div class="pure-u-1 max-w-2xl">
-                
-<a class="underline" href="/"><- Home</a>
+    <body>
+        
+<div class="flex row justify-center w-full">
+  <div class="max-w-prose text-md">
+    <h1>Joseph Lyon</h1>
 
-<h2 class="text-xl font-bold">
-  Infrastrucure Time
-</h2>
-<p class="text-sm"><light>2023-02-14</light></p>
-<p>Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I'm working on.</p>
+    <a class="underline" href="/"><- Home</a>
+    
+    <h2 class="text-xl font-bold">
+      Infrastrucure Time
+    </h2>
+    <p class="text-sm"><light>2023-02-14</light></p>
+    <p>Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I'm working on.</p>
 <p>When working on personal projects I usually don't want to think too hard about deployments while still not being limited by my infrastructure. As such, this site and most everything else I put online is on a $4 DigitalOcean VPS with Docker and <a href="https://dokku.com/">Dokku</a> installed. Shout out to <a href="https://sidney.kochman.org">@sidney</a> for introducing me to it years ago.</p>
 <p>Dokku is a great go-to self-hosted PaaS for simple projects. It works nicely with Docker and Buildpacks to provide a simple <code>git push</code> deployment mechanism with zero downtime deployments. Deploying an app with SSL is as simple as running:</p>
 <pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#7c7865;"># On the VPS
@@ -60,9 +59,10 @@
 </span></code></pre>
 <p>This keeps it simple and low overhead to maintain.</p>
 
+  </div>
+</div>
 
-            </div>
-        </div>
+
 
     </body>
 </html>
