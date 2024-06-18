@@ -1,0 +1,70 @@
+
+<html>
+    <head>
+        <link rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<!--        <script src="https://cdn.tailwindcss.com"></script>-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/styles/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;800;900&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+        
+<meta property="og:title" content="Infrastrucure Time" />
+<title>Infrastrucure Time</title>
+
+
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script defer data-domain="lyon.lol" src="https://plausible.io/js/script.js"></script>
+    </head>
+    <body>
+        
+<div class="flex row justify-center w-full">
+  <div class="max-w-prose w-full text-md px-5">
+    <h1>Joseph Lyon</h1>
+
+    <a class="underline" href="/"><- Home</a>
+    
+    <h2 class="text-xl font-bold">
+      Infrastrucure Time
+    </h2>
+    <p class="text-sm"><light>2023-02-14</light></p>
+    <div class="w-full relative">
+      <p>Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I'm working on.</p>
+<p>When working on personal projects I usually don't want to think too hard about deployments while still not being limited by my infrastructure. As such, this site and most everything else I put online is on a $4 DigitalOcean VPS with Docker and <a href="https://dokku.com/">Dokku</a> installed. Shout out to <a href="https://sidney.kochman.org">@sidney</a> for introducing me to it years ago.</p>
+<p>Dokku is a great go-to self-hosted PaaS for simple projects. It works nicely with Docker and Buildpacks to provide a simple <code>git push</code> deployment mechanism with zero downtime deployments. Deploying an app with SSL is as simple as running:</p>
+<pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="font-style:italic;color:#7c7865;"># On the VPS
+</span><span>$ dokku apps:create </span><span style="color:#cc7833;">[</span><span>name</span><span style="color:#cc7833;">]
+</span><span>$ dokku domains:set </span><span style="color:#cc7833;">[</span><span>name</span><span style="color:#cc7833;">]</span><span> name.lyon.lol
+</span><span>$ dokku letsencrypt:auto-renew </span><span style="color:#cc7833;">[</span><span>name</span><span style="color:#cc7833;">]
+</span><span>
+</span><span style="font-style:italic;color:#7c7865;"># Locally
+</span><span>$ git remote add dokku dokku@lyon.lol:</span><span style="color:#cc7833;">[</span><span>name</span><span style="color:#cc7833;">]
+</span><span>$ git push origin main:master
+</span></code></pre>
+<p>After this, my new app will be hosted at <code>https://name.lyon.lol</code>. If I want to deploy a new version I simply git push again.</p>
+<p>To facilitate this I've set up a few DNS records, namely a wildcard A record for all subdomains on lyon.lol</p>
+<pre style="background-color:#383838;color:#e6e1dc;"><code><span>Host IP              Type   TTL
+</span><span>@    68.183.102.12   A      5m
+</span><span>*    68.183.102.12   A      5m
+</span></code></pre>
+<p>This site is a great example of how this infrastructure is very powerful and quick to iterate with. The source is located on <a href="https://github.com/jlyon1/lyon-lol">github</a>. Content updates are just a <code>git push</code> away. I write the content, compile it with <a href="https://www.getzola.org/">Zola</a> and commit the whole output to the repo, at which point I push to dokku.</p>
+<p>For example:</p>
+<pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span>docker run</span><span style="font-style:italic;color:#fd971f;"> -u </span><span style="color:#c1be91;">&quot;$(id</span><span style="font-style:italic;color:#fd971f;"> -u</span><span style="color:#c1be91;">):$(id</span><span style="font-style:italic;color:#fd971f;"> -g</span><span style="color:#c1be91;">)&quot;</span><span style="font-style:italic;color:#fd971f;"> -v </span><span>$</span><span style="color:#d0d0ff;">PWD</span><span>:/app</span><span style="font-style:italic;color:#fd971f;"> --workdir</span><span> /app</span><span style="font-style:italic;color:#fd971f;"> -p</span><span> 8080:8080</span><span style="font-style:italic;color:#fd971f;"> -p</span><span> 1024:1024 ghcr.io/getzola/zola:v0.16.0 build
+</span><span>git add .
+</span><span>git commit</span><span style="font-style:italic;color:#fd971f;"> -m </span><span style="color:#c1be91;">&quot;Update content&quot;
+</span><span>git push dokku master
+</span></code></pre>
+<p>This keeps it simple and low overhead to maintain.</p>
+
+    </div>
+  </div>
+</div>
+
+
+
+    </body>
+</html>
