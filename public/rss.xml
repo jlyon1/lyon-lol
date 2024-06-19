@@ -31,8 +31,8 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 &lt;h3 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h3&gt;
 &lt;p&gt;First set up a &lt;a href=&quot;https:&#x2F;&#x2F;developers.google.com&#x2F;identity&#x2F;protocols&#x2F;oauth2&quot;&gt;Google OAuth Application&lt;&#x2F;a&gt;. I have requested pretty minimal permissions since I really only need an email to verify. &lt;&#x2F;p&gt;
 &lt;p&gt;In my case I set up two redirect urls &lt;em&gt;these can be set on the credentials tab of the oauth consent screen configuration&lt;&#x2F;em&gt;:&lt;&#x2F;p&gt;
-&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;http:&#x2F;&#x2F;localhost:8081&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google - for local testing
-&lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;color:#86c20e;&quot;&gt;https:&#x2F;&#x2F;service.lyon.lol&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google&lt;&#x2F;span&gt;&lt;span&gt; - fake url of the deployed service
+&lt;pre data-lang=&quot;text&quot; style=&quot;background-color:#383838;color:#e6e1dc;&quot; class=&quot;language-text &quot;&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&lt;span&gt;http:&#x2F;&#x2F;localhost:8081&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google - for local testing
+&lt;&#x2F;span&gt;&lt;span&gt;https:&#x2F;&#x2F;service.lyon.lol&#x2F;api&#x2F;v1&#x2F;auth&#x2F;callback?provider=google - fake url of the deployed service
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;After which grab your Client ID and Client Secret.&lt;&#x2F;p&gt;
 &lt;p&gt;We can then run the application like this:&lt;&#x2F;p&gt;

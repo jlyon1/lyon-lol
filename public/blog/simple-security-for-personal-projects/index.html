@@ -64,8 +64,8 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 <h3 id="how-it-works">How it works</h3>
 <p>First set up a <a href="https://developers.google.com/identity/protocols/oauth2">Google OAuth Application</a>. I have requested pretty minimal permissions since I really only need an email to verify. </p>
 <p>In my case I set up two redirect urls <em>these can be set on the credentials tab of the oauth consent screen configuration</em>:</p>
-<pre data-lang="markdown" style="background-color:#383838;color:#e6e1dc;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
-</span><span style="text-decoration:underline;color:#86c20e;">https://service.lyon.lol/api/v1/auth/callback?provider=google</span><span> - fake url of the deployed service
+<pre data-lang="text" style="background-color:#383838;color:#e6e1dc;" class="language-text "><code class="language-text" data-lang="text"><span>http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
+</span><span>https://service.lyon.lol/api/v1/auth/callback?provider=google - fake url of the deployed service
 </span></code></pre>
 <p>After which grab your Client ID and Client Secret.</p>
 <p>We can then run the application like this:</p>

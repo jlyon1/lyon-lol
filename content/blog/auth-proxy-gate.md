@@ -30,7 +30,7 @@ First set up a [Google OAuth Application](https://developers.google.com/identity
 
 In my case I set up two redirect urls _these can be set on the credentials tab of the oauth consent screen configuration_:
 
-```markdown
+```text
 http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
 https://service.lyon.lol/api/v1/auth/callback?provider=google - fake url of the deployed service
 ```
