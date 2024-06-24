@@ -64,14 +64,19 @@ driven by a flask app to provide a basic UI for my less technically savvy friend
 <h3 id="how-it-works">How it works</h3>
 <p>First set up a <a href="https://developers.google.com/identity/protocols/oauth2">Google OAuth Application</a>. I have requested pretty minimal permissions since I really only need an email to verify. </p>
 <p>In my case I set up two redirect urls <em>these can be set on the credentials tab of the oauth consent screen configuration</em>:</p>
-<pre data-lang="text" style="background-color:#383838;color:#e6e1dc;" class="language-text "><code class="language-text" data-lang="text"><span>http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
-</span><span>https://service.lyon.lol/api/v1/auth/callback?provider=google - fake url of the deployed service
+<pre data-lang="text" style="background-color:#383838;color:#e6e1dc;" class="language-text "><code class="language-text" data-lang="text"><span>http://localhost:8081/api/v1/auth/callback?provider=google
+</span><span>https://s.lyon.lol/api/v1/auth/callback?provider=google
 </span></code></pre>
 <p>After which grab your Client ID and Client Secret.</p>
 <p>We can then run the application like this:</p>
 <pre data-lang="bash" style="background-color:#383838;color:#e6e1dc;" class="language-bash "><code class="language-bash" data-lang="bash"><span>templ generate</span><span style="color:#cc7833;">; </span><span>go build .
 </span><span>
-</span><span>./auth-proxy-gate</span><span style="font-style:italic;color:#fd971f;"> --secret </span><span style="color:#c1be91;">&quot;GOOGLE SECRET&quot;</span><span style="font-style:italic;color:#fd971f;"> --redirect </span><span style="color:#c1be91;">&quot;http://localhost:8081&quot;</span><span style="font-style:italic;color:#fd971f;"> --clientid </span><span style="color:#c1be91;">&quot;GOOGLE_CLIENT_ID&quot;</span><span style="font-style:italic;color:#fd971f;"> --secretKey </span><span style="color:#c1be91;">&quot;replace_me_with_a_secret&quot;</span><span style="font-style:italic;color:#fd971f;"> --proxy </span><span style="color:#c1be91;">&quot;https://www.google.com&quot;</span><span style="font-style:italic;color:#fd971f;"> --allowList </span><span style="color:#c1be91;">&quot;email@example.com&quot;
+</span><span>./auth-proxy-gate</span><span style="font-style:italic;color:#fd971f;"> --secret </span><span style="color:#c1be91;">&quot;GOOGLE SECRET&quot; </span><span>\
+</span><span style="font-style:italic;color:#fd971f;">    --redirect </span><span style="color:#c1be91;">&quot;http://localhost:8081&quot;     </span><span>\
+</span><span style="font-style:italic;color:#fd971f;">    --clientid </span><span style="color:#c1be91;">&quot;GOOGLE_CLIENT_ID&quot;          </span><span>\
+</span><span style="font-style:italic;color:#fd971f;">    --secretKey </span><span style="color:#c1be91;">&quot;replace_me_with_a_secret&quot; </span><span>\
+</span><span style="font-style:italic;color:#fd971f;">    --proxy </span><span style="color:#c1be91;">&quot;https://www.google.com&quot;       </span><span>\
+</span><span style="font-style:italic;color:#fd971f;">    --allowList </span><span style="color:#c1be91;">&quot;email@example.com&quot;
 </span></code></pre>
 <p>This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example <a href="https://geocode.lyonsoftworks.com">https://geocode.lyonsoftworks.com</a> and add 
 any authorized users to the allow-list.</p>

@@ -31,8 +31,8 @@ First set up a [Google OAuth Application](https://developers.google.com/identity
 In my case I set up two redirect urls _these can be set on the credentials tab of the oauth consent screen configuration_:
 
 ```text
-http://localhost:8081/api/v1/auth/callback?provider=google - for local testing
-https://service.lyon.lol/api/v1/auth/callback?provider=google - fake url of the deployed service
+http://localhost:8081/api/v1/auth/callback?provider=google
+https://s.lyon.lol/api/v1/auth/callback?provider=google
 ```
 
 After which grab your Client ID and Client Secret.
@@ -42,7 +42,12 @@ We can then run the application like this:
 ```bash
 templ generate; go build .
 
-./auth-proxy-gate --secret "GOOGLE SECRET" --redirect "http://localhost:8081" --clientid "GOOGLE_CLIENT_ID" --secretKey "replace_me_with_a_secret" --proxy "https://www.google.com" --allowList "email@example.com"
+./auth-proxy-gate --secret "GOOGLE SECRET" \
+    --redirect "http://localhost:8081"     \
+    --clientid "GOOGLE_CLIENT_ID"          \
+    --secretKey "replace_me_with_a_secret" \
+    --proxy "https://www.google.com"       \
+    --allowList "email@example.com"
 ```
 
 This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example [https://geocode.lyonsoftworks.com](https://geocode.lyonsoftworks.com) and add 
