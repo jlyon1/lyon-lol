@@ -50,7 +50,8 @@ templ generate; go build .
     --allowList "email@example.com"
 ```
 
-This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example [https://geocode.lyonsoftworks.com](https://geocode.lyonsoftworks.com) and add 
-any authorized users to the allow-list.
+This is super simple, but effective. I will run this on the VPS where the app is running. My app will run listening on localhost, and the proxy will listen on whatever domain I chose to set up, for example [https://geocode.lyonsoftworks.com](https://geocode.lyonsoftworks.com).
+
+I will also add any authorized users to the allow-list.
 
 My next improvements will be to switch to a sqlite database, add a config file, and then add additional oauth providers.
