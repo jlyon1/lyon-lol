@@ -593,6 +593,10 @@ video {
   padding-right: 1.25rem;
 }
 
+.pt-12 {
+  padding-top: 3rem;
+}
+
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -663,4 +667,11 @@ h3 {
   font-size: 15px;
   font-weight: 800;
   margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  .md\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }

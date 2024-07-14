@@ -18,11 +18,21 @@
 {% endblock head %}
 
 {% block content %}
-<div class="w-full flex justify-center pt-5">
-    <div class="justify-center max-w-prose text-base px-5">
+<div class="w-full flex justify-center pt-12">
+    <div class="justify-center max-w-prose text-base md:px-12 px-5">
         {{ section.content | safe }}
-
-        <p>Posts</p>
+        <p class="font-bold">Work</p>
+        <div>
+            <ul>
+                <li>
+                    <p>Building <a href="https://www.catenatools.com">Catena Tools</a> at <a href="https://www.wolfjawstudios.com">Wolfjaw Studios.</a></p>
+                </li>
+                <li>
+                    Formerly at <a href="https://bloomberg.com">Bloomberg</a>
+                </li>
+            </ul>
+        </div>
+        <p class="font-bold">Posts</p>
         <div>
             <ul>
                 {% set blog_section = get_section(path="blog/_index.md") %}
@@ -34,7 +44,7 @@
             </ul>
         </div>
 
-        <p>Elsewhere</p>
+        <p class="font-bold">Elsewhere</p>
 
         <div>
         <span class="flex items-center">
