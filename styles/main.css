@@ -22,6 +22,11 @@ ul {
     padding-left: 40px;
 }
 
+li {
+    line-height: 1.5rem;
+    margin-top: 3px;
+}
+
 pre{
     overflow: scroll;
     padding: 10px;

@@ -1,6 +1,0 @@
-header-images/
-├── images
-│   └── main.png
-└── index.md
-
-1 directory, 2 files
