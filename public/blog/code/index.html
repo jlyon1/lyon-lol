@@ -27,6 +27,17 @@
 <meta property="twitter:title" content="Infrastrucure Time" />
 <meta property="twitter:description" content="" />
 
+<style>
+  li{
+    line-height: 35px;
+  }
+
+  p{
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+</style>
+
 
         
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lyon.lol/rss.xml">
@@ -44,7 +55,7 @@
       Infrastrucure Time
     </h1>
     <p class="text-sm"><light>2023-02-14</light></p>
-    <div class="w-full relative">
+  <div class="w-full relative">
       <p>Continuing the meta blog-about-blog trend I will go into how I run the infrastructure used to host this site and other small things I'm working on.</p>
 <p>When working on personal projects I usually don't want to think too hard about deployments while still not being limited by my infrastructure. As such, this site and most everything else I put online is on a $4 DigitalOcean VPS with Docker and <a href="https://dokku.com/">Dokku</a> installed. Shout out to <a href="https://sidney.kochman.org">@sidney</a> for introducing me to it years ago.</p>
 <p>Dokku is a great go-to self-hosted PaaS for simple projects. It works nicely with Docker and Buildpacks to provide a simple <code>git push</code> deployment mechanism with zero downtime deployments. Deploying an app with SSL is as simple as running:</p>

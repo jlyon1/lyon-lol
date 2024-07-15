@@ -17,6 +17,17 @@
 <meta property="twitter:title" content="{{page.title}}" />
 <meta property="twitter:description" content="{{page.description}}" />
 
+<style>
+  li{
+    line-height: 35px;
+  }
+
+  p{
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+</style>
+
 {% endblock head %}
 
 {% block content %}
@@ -33,7 +44,7 @@
       {{ page.title }}
     </h1>
     <p class="text-sm"><light>{{ page.date }}</light></p>
-    <div class="w-full relative">
+  <div class="w-full relative">
       {{ page.content | safe }}
     </div>
   </div>
