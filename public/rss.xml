@@ -7,7 +7,17 @@
       <generator>Zola</generator>
       <language>en</language>
       <atom:link href="https://lyon.lol/rss.xml" rel="self" type="application/rss+xml"/>
-      <lastBuildDate>Thu, 15 Aug 2024 00:00:00 +0000</lastBuildDate>
+      <lastBuildDate>Tue, 22 Oct 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Building a Multiplayer Backend: OAuth Authentication [External]</title>
+          <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://lyon.lol/blog/catena-tools-a-multiplayer-oauth/</link>
+          <guid>https://lyon.lol/blog/catena-tools-a-multiplayer-oauth/</guid>
+          <description>&lt;p&gt;I authored a technical blog post on Authentication for Catena Tools.&lt;&#x2F;p&gt;
+&lt;p&gt;Check it out &lt;a href=&quot;https:&#x2F;&#x2F;blog.catenatools.com&#x2F;technical-development-in-practice-building-an-oauth-lambda-function&#x2F;&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</description>
+      </item>
       <item>
           <title>Building a Multiplayer Backend: Authentication [External]</title>
           <pubDate>Thu, 15 Aug 2024 00:00:00 +0000</pubDate>
